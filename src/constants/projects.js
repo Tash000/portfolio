@@ -27,15 +27,15 @@ export const projectsData = [
   {
     id: 'autonomous-agv',
     title: 'Autonomous AGV Planning & Execution',
-    description: 'Natural language mission planner converting human speech/text instructions into validated mission JSON, dispatched to deterministic automated guided vehicle (AGV) execution motors.',
+    description: 'ROS-based mobile robot navigation and automated guided vehicle (AGV) platform: translates natural language mission commands into validated mission JSON, dispatched to deterministic motor controllers and obstacle avoidance pipelines.',
     category: 'Robotics',
-    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
-    tags: ['Python', 'AGV', 'Mission Planning', 'NLP', 'Embedded'],
+    image: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80',
+    tags: ['ROS', 'Python', 'AGV / AMR', 'Mission Planning', 'Embedded'],
     isPrivate: true,
     visible: true,
     featured: false,
     githubUrl: null, // Private repo
-    highlights: 'JSON schema validation, obstacle avoidance state graph, safety interlocks',
+    highlights: 'ROS nodes, JSON schema validation, obstacle avoidance state graph, safety interlocks',
   },
   {
     id: 'power-wrist',

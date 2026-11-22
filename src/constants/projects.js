@@ -29,7 +29,7 @@ export const projectsData = [
     title: 'Autonomous AGV Planning & Execution',
     description: 'ROS-based mobile robot navigation and automated guided vehicle (AGV) platform: translates natural language mission commands into validated mission JSON, dispatched to deterministic motor controllers and obstacle avoidance pipelines.',
     category: 'Robotics',
-    image: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
     tags: ['ROS', 'Python', 'AGV / AMR', 'Mission Planning', 'Embedded'],
     isPrivate: true,
     visible: true,

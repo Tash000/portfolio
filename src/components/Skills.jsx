@@ -110,7 +110,7 @@ const Skills = () => {
             style={{
               background: '#FFFFFF',
               borderRadius: '18px',
-              padding: '20px 24px',
+              padding: '16px 20px',
               border: '1.5px solid #FED7AA',
               boxShadow: '0 4px 16px rgba(255, 107, 0, 0.05)',
               transition: 'all 0.25s ease',
@@ -126,7 +126,7 @@ const Skills = () => {
               e.currentTarget.style.boxShadow = '0 4px 16px rgba(255, 107, 0, 0.05)';
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontWeight: 700, color: '#0F172A', fontSize: '1rem' }}>
                 {skill.name}
               </span>
@@ -136,36 +136,13 @@ const Skills = () => {
                   fontWeight: 700,
                   color: '#C2410C',
                   background: '#FFF7ED',
-                  padding: '2px 8px',
-                  borderRadius: '6px',
+                  padding: '4px 10px',
+                  borderRadius: '8px',
                   border: '1px solid #FDBA74',
                 }}
               >
                 {skill.category}
               </span>
-            </div>
-
-            {/* Progress Bar */}
-            <div
-              style={{
-                width: '100%',
-                height: '8px',
-                borderRadius: '9999px',
-                background: '#F1F5F9',
-                overflow: 'hidden',
-              }}
-            >
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                style={{
-                  height: '100%',
-                  borderRadius: '9999px',
-                  background: 'linear-gradient(90deg, #FF4500, #FF8A00, #FBBF24)',
-                }}
-              />
             </div>
           </motion.div>
         ))}

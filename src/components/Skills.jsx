@@ -1,30 +1,19 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { repoSkillStats, skills } from '../constants';
+import { motion } from 'framer-motion';
+import { disciplineBreakdowns } from '../constants';
 
-const categories = ['All', 'Languages', 'Hardware', 'AI & Vision', 'Frontend', 'Backend', 'Tools'];
-
-const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-
-  const filteredSkills =
-    activeCategory === 'All'
-      ? skills
-      : skills.filter((s) => s.category.toLowerCase() === activeCategory.toLowerCase());
-
-  // Donut chart math
-  const size = 260;
-  const strokeWidth = 26;
+/**
+ * Reusable Wheel (Donut) Chart Component
+ */
+const WheelChart = ({ items, size = 130, strokeWidth = 16, hoveredItem, onHover }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
 
-  // Calculate segment offsets
-  let accumulatedShare = 0;
-  const segments = repoSkillStats.map((item) => {
-    const strokeDasharray = `${(item.share / 100) * circumference} ${circumference}`;
-    const strokeDashoffset = -((accumulatedShare / 100) * circumference);
-    accumulatedShare += item.share;
+  let accumulatedPercent = 0;
+  const segments = items.map((item) => {
+    const strokeDasharray = `${(item.percentage / 100) * circumference} ${circumference}`;
+    const strokeDashoffset = -((accumulatedPercent / 100) * circumference);
+    accumulatedPercent += item.percentage;
     return {
       ...item,
       strokeDasharray,
@@ -32,9 +21,79 @@ const Skills = () => {
     };
   });
 
-  const activeStat = hoveredSkill
-    ? repoSkillStats.find((s) => s.name === hoveredSkill)
-    : null;
+  const activeItem = hoveredItem ? items.find((it) => it.name === hoveredItem) : items[0];
+
+  return (
+    <div style={{ position: 'relative', width: `${size}px`, height: `${size}px`, flexShrink: 0 }}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ transform: 'rotate(-90deg)' }}>
+        {/* Track */}
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="#FFF7ED"
+          strokeWidth={strokeWidth}
+        />
+        {/* Slices */}
+        {segments.map((seg) => {
+          const isHovered = hoveredItem === seg.name;
+          return (
+            <circle
+              key={seg.name}
+              cx={size / 2}
+              cy={size / 2}
+              r={radius}
+              fill="none"
+              stroke={seg.color}
+              strokeWidth={isHovered ? strokeWidth + 4 : strokeWidth}
+              strokeDasharray={seg.strokeDasharray}
+              strokeDashoffset={seg.strokeDashoffset}
+              strokeLinecap="round"
+              style={{
+                transition: 'stroke-width 0.2s ease, filter 0.2s ease',
+                cursor: 'pointer',
+                filter: isHovered ? `drop-shadow(0 0 6px ${seg.color})` : 'none',
+              }}
+              onMouseEnter={() => onHover(seg.name)}
+              onMouseLeave={() => onHover(null)}
+            />
+          );
+        })}
+      </svg>
+
+      {/* Center Readout */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          pointerEvents: 'none',
+          padding: '6px',
+        }}
+      >
+        <span style={{ fontSize: '1rem', fontWeight: 800, color: activeItem?.color || '#0F172A', lineHeight: 1.1 }}>
+          {activeItem?.percentage}%
+        </span>
+        <span style={{ fontSize: '0.62rem', color: '#64748B', fontWeight: 600, marginTop: '2px', maxWidth: '65px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {activeItem?.name}
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const Skills = () => {
+  // Track hovered item per discipline card
+  const [hoveredMap, setHoveredMap] = useState({});
+
+  const setHovered = (disciplineId, itemName) => {
+    setHoveredMap((prev) => ({ ...prev, [disciplineId]: itemName }));
+  };
 
   return (
     <section id="skills" style={{ padding: '100px 24px', maxWidth: '1280px', margin: '0 auto' }}>
@@ -44,7 +103,7 @@ const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        style={{ textAlign: 'center', marginBottom: '45px' }}
+        style={{ textAlign: 'center', marginBottom: '50px' }}
       >
         <span
           style={{
@@ -55,7 +114,7 @@ const Skills = () => {
             letterSpacing: '2px',
           }}
         >
-          Repo Telemetry & Stack
+          Repository Telemetry
         </span>
         <h2
           style={{
@@ -74,324 +133,197 @@ const Skills = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Repository Usage
+            Discipline Distribution
           </span>
         </h2>
-        <p style={{ color: '#475569', maxWidth: '650px', margin: '14px auto 0', fontSize: '1.02rem', lineHeight: 1.6 }}>
-          A concrete, data-backed breakdown of how many repositories and robotics systems actively implement each technology.
+        <p style={{ color: '#475569', maxWidth: '680px', margin: '14px auto 0', fontSize: '1.02rem', lineHeight: 1.6 }}>
+          How my repositories and robotics systems are built—measured by actual codebase volume, hardware deployments, and architecture distribution.
         </p>
       </motion.div>
 
-      {/* Interactive Repository Wheel Chart Container */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        style={{
-          background: '#FFFFFF',
-          borderRadius: '28px',
-          padding: '40px 32px',
-          border: '1.5px solid #FED7AA',
-          boxShadow: '0 12px 36px rgba(255, 107, 0, 0.08), 0 2px 10px rgba(0,0,0,0.03)',
-          marginBottom: '50px',
-        }}
-      >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '40px',
-            alignItems: 'center',
-          }}
-        >
-          {/* Left: The Wheel (Donut) Chart */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-            }}
-          >
-            <div style={{ position: 'relative', width: `${size}px`, height: `${size}px` }}>
-              <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ transform: 'rotate(-90deg)' }}>
-                {/* Background Ring */}
-                <circle
-                  cx={size / 2}
-                  cy={size / 2}
-                  r={radius}
-                  fill="none"
-                  stroke="#FFF7ED"
-                  strokeWidth={strokeWidth}
-                />
-
-                {/* Slices */}
-                {segments.map((seg) => {
-                  const isHovered = hoveredSkill === seg.name;
-                  return (
-                    <circle
-                      key={seg.name}
-                      cx={size / 2}
-                      cy={size / 2}
-                      r={radius}
-                      fill="none"
-                      stroke={seg.color}
-                      strokeWidth={isHovered ? strokeWidth + 6 : strokeWidth}
-                      strokeDasharray={seg.strokeDasharray}
-                      strokeDashoffset={seg.strokeDashoffset}
-                      strokeLinecap="round"
-                      style={{
-                        transition: 'stroke-width 0.25s ease, filter 0.25s ease',
-                        cursor: 'pointer',
-                        filter: isHovered ? `drop-shadow(0 0 10px ${seg.color})` : 'none',
-                      }}
-                      onMouseEnter={() => setHoveredSkill(seg.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    />
-                  );
-                })}
-              </svg>
-
-              {/* Center Wheel Content */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                  pointerEvents: 'none',
-                  padding: '16px',
-                }}
-              >
-                {activeStat ? (
-                  <motion.div
-                    key={activeStat.name}
-                    initial={{ scale: 0.85, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div style={{ fontSize: '1.8rem', fontWeight: 800, color: activeStat.color, lineHeight: 1 }}>
-                      {activeStat.repoCount}
-                    </div>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0F172A', marginTop: '2px' }}>
-                      Repositories
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 600 }}>
-                      {activeStat.share}% Codebase Share
-                    </div>
-                  </motion.div>
-                ) : (
-                  <div>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#EA580C', lineHeight: 1 }}>
-                      9+
-                    </div>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0F172A', marginTop: '2px' }}>
-                      Active Projects
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 500 }}>
-                      Hover for Breakdown
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div style={{ marginTop: '16px', fontSize: '0.85rem', color: '#EA580C', fontWeight: 600 }}>
-              💡 Hover on any slice or skill to view repo density
-            </div>
-          </div>
-
-          {/* Right: Telemetry Breakdown List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {repoSkillStats.map((item) => {
-              const isHovered = hoveredSkill === item.name;
-              return (
-                <div
-                  key={item.name}
-                  onMouseEnter={() => setHoveredSkill(item.name)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                  style={{
-                    padding: '12px 18px',
-                    borderRadius: '16px',
-                    background: isHovered ? '#FFF7ED' : '#F8FAFC',
-                    border: isHovered ? `1.5px solid ${item.color}` : '1.5px solid #E2E8F0',
-                    transition: 'all 0.2s ease',
-                    cursor: 'pointer',
-                    boxShadow: isHovered ? '0 4px 14px rgba(255, 107, 0, 0.12)' : 'none',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span
-                        style={{
-                          width: '12px',
-                          height: '12px',
-                          borderRadius: '50%',
-                          background: item.color,
-                          display: 'inline-block',
-                          flexShrink: 0,
-                          boxShadow: `0 0 8px ${item.color}`,
-                        }}
-                      />
-                      <span style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.96rem' }}>
-                        {item.name}
-                      </span>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span
-                        style={{
-                          background: '#FFFFFF',
-                          border: `1.5px solid ${item.color}`,
-                          color: item.color,
-                          fontSize: '0.78rem',
-                          fontWeight: 800,
-                          padding: '3px 10px',
-                          borderRadius: '8px',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {item.repoCount} {item.repoCount === 1 ? 'Repo' : 'Repos'}
-                      </span>
-                      <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: 600 }}>
-                        {item.share}%
-                      </span>
-                    </div>
-                  </div>
-
-                  <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '4px', paddingLeft: '22px' }}>
-                    {item.description}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Category Pills Header */}
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', marginBottom: '8px' }}>
-          Explore Full Stack by Category
-        </h3>
-        <p style={{ color: '#64748B', fontSize: '0.92rem' }}>
-          Filter all tools and libraries across your engineering toolkit.
-        </p>
-      </div>
-
-      {/* Category Pills */}
+      {/* 4 Discipline Bento Cards with Wheel Charts */}
       <div
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '10px',
-          justifyContent: 'center',
-          marginBottom: '36px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+          gap: '28px',
         }}
       >
-        {categories.map((cat) => {
-          const isSelected = activeCategory === cat;
+        {disciplineBreakdowns.map((discipline, index) => {
+          const hoveredItem = hoveredMap[discipline.id];
           return (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
+            <motion.div
+              key={discipline.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               style={{
-                padding: '8px 18px',
-                borderRadius: '12px',
-                background: isSelected ? 'linear-gradient(135deg, #FF4500, #FF8A00)' : '#FFFFFF',
-                color: isSelected ? '#FFFFFF' : '#334155',
-                border: isSelected ? '1px solid transparent' : '1.5px solid #FED7AA',
-                fontSize: '0.9rem',
-                fontWeight: isSelected ? 700 : 500,
-                cursor: 'pointer',
-                boxShadow: isSelected ? '0 4px 14px rgba(255, 107, 0, 0.3)' : '0 2px 6px rgba(0,0,0,0.03)',
-                transition: 'all 0.25s ease',
+                background: '#FFFFFF',
+                borderRadius: '24px',
+                padding: '30px 26px',
+                border: '1.5px solid #FED7AA',
+                boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
               onMouseEnter={(e) => {
-                if (!isSelected) {
-                  e.currentTarget.style.borderColor = '#FF8A00';
-                  e.currentTarget.style.background = '#FFF7ED';
-                }
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = '#FF6B00';
+                e.currentTarget.style.boxShadow = '0 16px 36px rgba(255, 107, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04)';
               }}
               onMouseLeave={(e) => {
-                if (!isSelected) {
-                  e.currentTarget.style.borderColor = '#FED7AA';
-                  e.currentTarget.style.background = '#FFFFFF';
-                }
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#FED7AA';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)';
               }}
             >
-              {cat}
-            </button>
+              <div>
+                {/* Card Title & Icon */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                  <div
+                    style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '12px',
+                      background: '#FFF7ED',
+                      border: '1px solid #FDBA74',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    {discipline.icon}
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.2 }}>
+                      {discipline.title}
+                    </h3>
+                    <div style={{ fontSize: '0.78rem', color: '#EA580C', fontWeight: 600, marginTop: '2px' }}>
+                      {discipline.subtitle}
+                    </div>
+                  </div>
+                </div>
+
+                <p style={{ color: '#64748B', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '20px' }}>
+                  {discipline.description}
+                </p>
+
+                {/* Main Visual: Wheel Chart + Info */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '24px',
+                    padding: '16px',
+                    borderRadius: '18px',
+                    background: '#FFFDF9',
+                    border: '1px solid #FED7AA',
+                    marginBottom: '20px',
+                  }}
+                >
+                  <WheelChart
+                    items={discipline.items}
+                    size={120}
+                    strokeWidth={15}
+                    hoveredItem={hoveredItem}
+                    onHover={(item) => setHovered(discipline.id, item)}
+                  />
+
+                  {/* Highlights Summary */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '0.5px' }}>
+                      Leading Tech
+                    </div>
+                    <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>
+                      {discipline.items[0].name}
+                    </div>
+                    <div style={{ fontSize: '0.82rem', color: '#EA580C', fontWeight: 700 }}>
+                      {discipline.items[0].percentage}% of total stack
+                    </div>
+                  </div>
+                </div>
+
+                {/* GitHub-Style Segmented Bar */}
+                <div
+                  style={{
+                    width: '100%',
+                    height: '10px',
+                    borderRadius: '9999px',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    marginBottom: '18px',
+                    boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.06)',
+                  }}
+                >
+                  {discipline.items.map((item) => (
+                    <div
+                      key={item.name}
+                      style={{
+                        width: `${item.percentage}%`,
+                        height: '100%',
+                        backgroundColor: item.color,
+                        opacity: hoveredItem ? (hoveredItem === item.name ? 1 : 0.35) : 1,
+                        transition: 'opacity 0.2s ease, transform 0.2s ease',
+                      }}
+                      title={`${item.name}: ${item.percentage}%`}
+                    />
+                  ))}
+                </div>
+
+                {/* GitHub-Style Bullet Legend */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    columnGap: '16px',
+                    rowGap: '8px',
+                  }}
+                >
+                  {discipline.items.map((item) => {
+                    const isHovered = hoveredItem === item.name;
+                    return (
+                      <div
+                        key={item.name}
+                        onMouseEnter={() => setHovered(discipline.id, item.name)}
+                        onMouseLeave={() => setHovered(discipline.id, null)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          cursor: 'pointer',
+                          opacity: hoveredItem ? (isHovered ? 1 : 0.5) : 1,
+                          transition: 'opacity 0.2s ease',
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: '9px',
+                            height: '9px',
+                            borderRadius: '50%',
+                            backgroundColor: item.color,
+                            display: 'inline-block',
+                            flexShrink: 0,
+                          }}
+                        />
+                        <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A' }}>
+                          {item.name}
+                        </span>
+                        <span style={{ fontSize: '0.84rem', color: '#64748B', fontWeight: 500 }}>
+                          {item.percentage}%
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
           );
         })}
       </div>
-
-      {/* Skills Grid (Clean Cards Without Progress Bars) */}
-      <motion.div
-        layout
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '16px',
-        }}
-      >
-        <AnimatePresence>
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              layout
-              key={skill.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25, delay: index * 0.02 }}
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '16px',
-                padding: '16px 20px',
-                border: '1.5px solid #FED7AA',
-                boxShadow: '0 4px 14px rgba(255, 107, 0, 0.04)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FF6B00';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(255, 107, 0, 0.12)';
-                e.currentTarget.style.background = '#FFFDF9';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#FED7AA';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(255, 107, 0, 0.04)';
-                e.currentTarget.style.background = '#FFFFFF';
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.98rem' }}>
-                  {skill.name}
-                </span>
-                <span
-                  style={{
-                    fontSize: '0.78rem',
-                    fontWeight: 700,
-                    color: '#C2410C',
-                    background: '#FFF7ED',
-                    padding: '3px 9px',
-                    borderRadius: '8px',
-                    border: '1px solid #FDBA74',
-                  }}
-                >
-                  {skill.category}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
     </section>
   );
 };

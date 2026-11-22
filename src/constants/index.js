@@ -67,76 +67,60 @@ export const aboutData = {
 };
 
 // ============================================================
-// REAL REPO USAGE TELEMETRY (What powers your codebase)
+// DISCIPLINE WHEEL & USAGE BREAKDOWNS (GitHub-Style Telemetry)
 // ============================================================
-export const repoSkillStats = [
+export const disciplineBreakdowns = [
   {
-    name: "Python",
-    repoCount: 7,
-    share: 32, // Share of total skill instances across projects
-    color: "#FF4500",
-    category: "Languages",
-    description: "Core AI models, AGV mission planning, audio ML & scripts",
+    id: "languages",
+    title: "Codebase Languages",
+    subtitle: "Real GitHub Repository Telemetry",
+    icon: "💻",
+    description: "Calculated from total code volume across active repositories.",
+    items: [
+      { name: "Python", percentage: 58.4, color: "#3572A5" },
+      { name: "TypeScript & JS", percentage: 17.2, color: "#3178C6" },
+      { name: "C / C++", percentage: 12.6, color: "#F34B7D" },
+      { name: "CSS & HTML", percentage: 8.8, color: "#563D7C" },
+      { name: "Shell & Others", percentage: 3.0, color: "#89E051" },
+    ],
   },
   {
-    name: "Embedded Hardware (ESP32 / Arduino / Jetson)",
-    repoCount: 4,
-    share: 18,
-    color: "#FF6B00",
-    category: "Hardware",
-    description: "Physical microcontrollers, sensor buses, CSI cameras & motors",
+    id: "hardware",
+    title: "Microcontrollers & Hardware",
+    subtitle: "Physical Embedded Ecosystem",
+    icon: "🔌",
+    description: "Proportion of hardware builds & microcontroller deployments.",
+    items: [
+      { name: "ESP32-S3 & ESP32", percentage: 40.0, color: "#FF5722" },
+      { name: "Arduino (Uno/Mega/Nano)", percentage: 30.0, color: "#00979C" },
+      { name: "NVIDIA Jetson Nano", percentage: 20.0, color: "#76B900" },
+      { name: "Actuators & Sensors", percentage: 10.0, color: "#F59E0B" },
+    ],
   },
   {
-    name: "C / C++",
-    repoCount: 3,
-    share: 14,
-    color: "#EA580C",
-    category: "Languages",
-    description: "Low-latency kinematics, biomechanical actuation & loops",
+    id: "robotics",
+    title: "Robotics Middleware & Control",
+    subtitle: "Autonomy & Kinematics Software",
+    icon: "⚙️",
+    description: "Architectural distribution across robotics software stacks.",
+    items: [
+      { name: "ROS (Robot Operating System)", percentage: 45.0, color: "#EA580C" },
+      { name: "AGV / AMR Navigation", percentage: 35.0, color: "#F59E0B" },
+      { name: "Kinematics & Motor Control", percentage: 20.0, color: "#8B5CF6" },
+    ],
   },
   {
-    name: "ROS Middleware",
-    repoCount: 3,
-    share: 14,
-    color: "#F59E0B",
-    category: "Robotics",
-    description: "Robot Operating System nodes, mission graphs & transforms",
+    id: "ai-vision",
+    title: "AI, Vision & Audio Perception",
+    subtitle: "Machine Learning Pipelines",
+    icon: "👁️",
+    description: "Usage of vision tracking, acoustic ML, and edge inference.",
+    items: [
+      { name: "Computer Vision (OpenCV)", percentage: 45.0, color: "#2563EB" },
+      { name: "Edge AI & TensorRT", percentage: 30.0, color: "#10B981" },
+      { name: "Acoustic / Audio ML", percentage: 25.0, color: "#F59E0B" },
+    ],
   },
-  {
-    name: "Computer Vision & OpenCV",
-    repoCount: 3,
-    share: 13,
-    color: "#FBBF24",
-    category: "AI & Vision",
-    description: "Gesture tracking, real-time spatial detection & camera math",
-  },
-  {
-    name: "React & JavaScript",
-    repoCount: 2,
-    share: 9,
-    color: "#E11D48",
-    category: "Web & Tools",
-    description: "Full-stack apps, PWAs & AI agent workflow automation skills",
-  },
-];
-
-export const skills = [
-  { name: "Python", category: "Languages" },
-  { name: "C/C++", category: "Languages" },
-  { name: "JavaScript", category: "Languages" },
-  { name: "React", category: "Frontend" },
-  { name: "HTML/CSS", category: "Frontend" },
-  { name: "FastAPI / Node", category: "Backend" },
-  { name: "OpenCV", category: "AI & Vision" },
-  { name: "TensorFlow / PyTorch", category: "AI & Vision" },
-  { name: "Edge AI / TensorRT", category: "AI & Vision" },
-  { name: "ESP32-S3 & ESP32", category: "Hardware" },
-  { name: "Arduino / Microcontrollers", category: "Hardware" },
-  { name: "NVIDIA Jetson Nano", category: "Hardware" },
-  { name: "ROS (Robot Operating System)", category: "Tools" },
-  { name: "Git & GitHub CLI", category: "Tools" },
-  { name: "Linux / Shell", category: "Tools" },
-  { name: "Docker", category: "Tools" },
 ];
 
 export const experiences = [

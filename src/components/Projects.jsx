@@ -196,6 +196,10 @@ const Projects = () => {
               <div style={{ position: 'relative', height: '190px', width: '100%', overflow: 'hidden' }}>
                 <img
                   src={project.image}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80';
+                  }}
                   alt={project.title}
                   style={{
                     width: '100%',

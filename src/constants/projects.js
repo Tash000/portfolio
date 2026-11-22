@@ -29,7 +29,7 @@ export const projectsData = [
     title: 'Autonomous AGV Planning & Execution',
     description: 'Natural language mission planner converting human speech/text instructions into validated mission JSON, dispatched to deterministic automated guided vehicle (AGV) execution motors.',
     category: 'Robotics',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
     tags: ['Python', 'AGV', 'Mission Planning', 'NLP', 'Embedded'],
     isPrivate: true,
     visible: true,

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FiArrowDown, FiGithub, FiMail, FiZap, FiCode } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa';
 import { heroData, socialLinks } from '../constants';
+import avatarImg from '../assets/avatar.png';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -271,7 +272,11 @@ const Hero = () => {
               }}
             >
               <img
-                src={heroData.avatar}
+                src={avatarImg}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = heroData.avatar;
+                }}
                 alt="Toushif profile"
                 style={{
                   width: '100%',
@@ -311,8 +316,8 @@ const Hero = () => {
                 <div style={{ fontSize: '0.75rem', color: '#78350F', fontWeight: 500 }}>Edge Vision</div>
               </div>
               <div style={{ background: '#FFF1F2', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#BE123C' }}>Doosan Cobot</div>
-                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Object Sorting</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#BE123C' }}>Edge AI & ML</div>
+                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Benchmarking</div>
               </div>
               <div style={{ background: '#F0FDF4', padding: '10px 14px', borderRadius: '14px' }}>
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#15803D' }}>Autonomous</div>

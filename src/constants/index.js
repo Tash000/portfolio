@@ -15,7 +15,7 @@ export const navLinks = [
 export const heroData = {
   greeting: "Hello World! I'm",
   name: "Toushif",
-  avatar: "https://avatars.githubusercontent.com/u/134617552?v=4",
+  avatar: "/avatar.png",
   tagline: "Innovating at the Edge of Robotics & Artificial Intelligence",
   description: "Robotics Engineer • AI Developer • Full-Stack Builder",
   badges: [
@@ -33,14 +33,14 @@ export const heroData = {
 
 export const aboutData = {
   intro:
-    "I am an enthusiastic robotics engineer and software innovator fueled by the challenge of bridging tangible hardware with cutting-edge artificial intelligence. Whether designing dual-controller humanoid robot firmware on ESP32-S3, programming industrial cobots, or building AI copilots and developer automation tools, I bring relentless energy, precision, and curiosity to every project I take on.",
+    "I am an enthusiastic robotics engineer and software innovator fueled by the challenge of bridging tangible hardware with cutting-edge artificial intelligence. Whether designing microcontroller systems on ESP32-S3, developing autonomous AGVs, or building AI copilots and developer automation tools, I bring relentless energy, precision, and curiosity to every project I take on.",
   cards: [
     {
       title: "Robotics & Hardware",
       icon: "🤖",
       color: "#FF5722",
       description:
-        "Humanoid robots, cobots, AGVs, biomechanical wrists — ESP32-S3, Arduino, Jetson Nano, ROS, C++.",
+        "Humanoid robots, AGVs, biomechanical wrists — ESP32-S3, Arduino, Jetson Nano, ROS, C++.",
     },
     {
       title: "Edge AI & Vision",
@@ -78,8 +78,8 @@ export const skills = [
   { name: "Edge AI / TensorRT", level: 75, category: "AI & Vision" },
   { name: "ESP32-S3 & ESP32", level: 90, category: "Hardware" },
   { name: "NVIDIA Jetson Nano", level: 80, category: "Hardware" },
-  { name: "Doosan Cobot / ROS", level: 72, category: "Hardware" },
   { name: "Arduino / Microcontrollers", level: 88, category: "Hardware" },
+  { name: "ROS (Robot Operating System)", level: 82, category: "Tools" },
   { name: "Git & GitHub CLI", level: 90, category: "Tools" },
   { name: "Linux / Shell", level: 80, category: "Tools" },
   { name: "Docker", level: 60, category: "Tools" },
@@ -99,14 +99,14 @@ export const experiences = [
     ],
   },
   {
-    title: "Embedded Systems & Cobot Programming",
-    subtitle: "Industrial Automation & Robotics",
+    title: "Embedded Systems & Autonomous AGV Systems",
+    subtitle: "Robotics & Hardware Automation",
     date: "2025",
     type: "Robotics",
     points: [
-      "Programmed Doosan collaborative robot arms for automated industrial handling and pick-and-place tasks.",
-      "Developed computer vision pipelines for real-time item detection and robotic object sorting.",
-      "Formulated autonomous AGV navigation pipelines translating natural language missions into deterministic motor commands.",
+      "Engineered autonomous AGV navigation pipelines translating natural language missions into validated motor commands.",
+      "Developed computer vision pipelines for real-time item detection and spatial localization.",
+      "Implemented hardware safety interlocks, sensor telemetry, and obstacle avoidance state machines.",
     ],
   },
   {

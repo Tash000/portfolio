@@ -32,7 +32,7 @@ const WheelChart = ({ items, size = 130, strokeWidth = 16, hoveredItem, onHover 
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#FFF7ED"
+          stroke="var(--flame-50)"
           strokeWidth={strokeWidth}
         />
         {/* Slices */}
@@ -107,7 +107,7 @@ const Skills = () => {
       >
         <span
           style={{
-            color: '#EA580C',
+            color: 'var(--flame-600)',
             fontSize: '0.92rem',
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -128,7 +128,7 @@ const Skills = () => {
           Skills &{' '}
           <span
             style={{
-              background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+              background: 'var(--gradient-flame)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -162,8 +162,8 @@ const Skills = () => {
                 background: '#FFFFFF',
                 borderRadius: '24px',
                 padding: '30px 26px',
-                border: '1.5px solid #FED7AA',
-                boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)',
+                border: '1.5px solid var(--border-light)',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -171,13 +171,13 @@ const Skills = () => {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.borderColor = '#FF6B00';
-                e.currentTarget.style.boxShadow = '0 16px 36px rgba(255, 107, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04)';
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
+                e.currentTarget.style.boxShadow = '0 16px 36px var(--border-glow), 0 4px 12px rgba(0, 0, 0, 0.04)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = '#FED7AA';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)';
+                e.currentTarget.style.borderColor = 'var(--border-light)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)';
               }}
             >
               <div>

@@ -19,7 +19,7 @@ const styles = {
     marginBottom: '40px',
   },
   eyebrow: {
-    color: '#EA580C',
+    color: 'var(--flame-600)',
     fontSize: '0.9rem',
     fontWeight: 800,
     textTransform: 'uppercase',
@@ -44,7 +44,7 @@ const styles = {
   underline: {
     width: '80px',
     height: '4px',
-    background: 'linear-gradient(90deg, #FF4500, #FF8A00, #FBBF24)',
+    background: 'var(--gradient-flame)',
     margin: '18px auto 0',
     borderRadius: '2px',
   },
@@ -74,26 +74,26 @@ const styles = {
     flexWrap: 'wrap',
   },
   stageBadge: {
-    background: '#FFF7ED',
-    color: '#C2410C',
+    background: 'var(--flame-50)',
+    color: 'var(--flame-700)',
     fontSize: '0.75rem',
     fontWeight: 800,
     padding: '4px 12px',
     borderRadius: '999px',
-    border: '1px solid #FDBA74',
+    border: '1px solid var(--border-light)',
     letterSpacing: '0.5px',
     display: 'inline-flex',
     alignItems: 'center',
     gap: '6px',
   },
   typeBadge: {
-    background: '#FEF3C7',
-    color: '#92400E',
+    background: 'var(--flame-50)',
+    color: 'var(--flame-800)',
     fontSize: '0.72rem',
     fontWeight: 700,
     padding: '3px 10px',
     borderRadius: '6px',
-    border: '1px solid #FDE68A',
+    border: '1px solid var(--border-light)',
   },
   entryTitle: {
     fontSize: '1.25rem',
@@ -105,7 +105,7 @@ const styles = {
   entrySubtitle: {
     fontSize: '0.94rem',
     fontWeight: 600,
-    color: '#EA580C',
+    color: 'var(--flame-600)',
     marginBottom: '16px',
   },
   pointsList: {
@@ -130,8 +130,8 @@ const styles = {
     width: '7px',
     height: '7px',
     borderRadius: '50%',
-    background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
-    boxShadow: '0 0 8px rgba(255, 107, 0, 0.45)',
+    background: 'var(--gradient-flame)',
+    boxShadow: '0 0 8px var(--border-glow)',
   },
 };
 
@@ -146,8 +146,8 @@ const underlineVariants = {
 };
 
 const iconStyle = {
-  background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
-  boxShadow: '0 4px 18px rgba(255, 107, 0, 0.4)',
+  background: 'var(--gradient-flame)',
+  boxShadow: 'var(--shadow-flame)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -157,14 +157,14 @@ const iconStyle = {
 
 const contentStyle = {
   background: '#FFFFFF',
-  border: '1.5px solid #FED7AA',
+  border: '1.5px solid var(--border-light)',
   borderRadius: '20px',
-  boxShadow: '0 10px 28px rgba(255, 107, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)',
+  boxShadow: '0 10px 28px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
   padding: '28px',
 };
 
 const contentArrowStyle = {
-  borderRight: '10px solid #FED7AA',
+  borderRight: '10px solid var(--border-light)',
 };
 
 const Experience = () => {
@@ -189,7 +189,7 @@ const Experience = () => {
             Engineering{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+                background: 'var(--gradient-flame)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -212,10 +212,10 @@ const Experience = () => {
               onClick={() => setOrder('chronological')}
               style={{
                 ...styles.toggleBtn,
-                background: order === 'chronological' ? 'linear-gradient(135deg, #FF4500, #FF8A00)' : '#FFFFFF',
+                background: order === 'chronological' ? 'var(--gradient-flame)' : '#FFFFFF',
                 color: order === 'chronological' ? '#FFFFFF' : '#475569',
-                borderColor: order === 'chronological' ? '#EA580C' : '#E2E8F0',
-                boxShadow: order === 'chronological' ? '0 4px 14px rgba(255, 107, 0, 0.25)' : 'none',
+                borderColor: order === 'chronological' ? 'var(--flame-600)' : '#E2E8F0',
+                boxShadow: order === 'chronological' ? 'var(--shadow-flame)' : 'none',
               }}
             >
               ⏳ Chronological: Past → Present
@@ -224,10 +224,10 @@ const Experience = () => {
               onClick={() => setOrder('reverse')}
               style={{
                 ...styles.toggleBtn,
-                background: order === 'reverse' ? 'linear-gradient(135deg, #FF4500, #FF8A00)' : '#FFFFFF',
+                background: order === 'reverse' ? 'var(--gradient-flame)' : '#FFFFFF',
                 color: order === 'reverse' ? '#FFFFFF' : '#475569',
-                borderColor: order === 'reverse' ? '#EA580C' : '#E2E8F0',
-                boxShadow: order === 'reverse' ? '0 4px 14px rgba(255, 107, 0, 0.25)' : 'none',
+                borderColor: order === 'reverse' ? 'var(--flame-600)' : '#E2E8F0',
+                boxShadow: order === 'reverse' ? 'var(--shadow-flame)' : 'none',
               }}
             >
               ⏱️ Latest First: Present → Past
@@ -236,7 +236,7 @@ const Experience = () => {
         </motion.div>
 
         <VerticalTimeline
-          lineColor="linear-gradient(180deg, #FF6B00 0%, #F59E0B 100%)"
+          lineColor="var(--gradient-flame)"
           animate={true}
         >
           {displayedExperiences.map((exp, index) => (
@@ -280,12 +280,12 @@ const Experience = () => {
 
         <style>{`
           .timeline-date-custom {
-            color: #7C2D12 !important;
+            color: var(--flame-800) !important;
             font-weight: 800 !important;
             font-size: 0.95rem !important;
           }
           .vertical-timeline::before {
-            background: linear-gradient(180deg, #FF6B00 0%, #F59E0B 100%) !important;
+            background: var(--gradient-flame) !important;
             width: 3px !important;
           }
         `}</style>

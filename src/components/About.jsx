@@ -16,7 +16,7 @@ const About = () => {
       >
         <span
           style={{
-            color: '#EA580C',
+            color: 'var(--flame-600)',
             fontSize: '0.92rem',
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -37,7 +37,7 @@ const About = () => {
           Engineering With{' '}
           <span
             style={{
-              background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+              background: 'var(--gradient-flame)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -77,21 +77,21 @@ const About = () => {
               background: '#FFFFFF',
               borderRadius: '24px',
               padding: '32px 26px',
-              border: '1.5px solid #FED7AA',
-              boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)',
+              border: '1.5px solid var(--border-light)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
               display: 'flex',
               flexDirection: 'column',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-6px)';
-              e.currentTarget.style.borderColor = '#FF6B00';
-              e.currentTarget.style.boxShadow = '0 16px 36px rgba(255, 107, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.05)';
+              e.currentTarget.style.borderColor = 'var(--flame-500)';
+              e.currentTarget.style.boxShadow = '0 16px 36px var(--border-glow), 0 4px 12px rgba(0, 0, 0, 0.04)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = '#FED7AA';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)';
+              e.currentTarget.style.borderColor = 'var(--border-light)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)';
             }}
           >
             <div
@@ -99,14 +99,14 @@ const About = () => {
                 width: '60px',
                 height: '60px',
                 borderRadius: '18px',
-                background: 'linear-gradient(135deg, #FFF7ED, #FFEDD5)',
-                border: '1.5px solid #FDBA74',
+                background: 'var(--flame-50)',
+                border: '1.5px solid var(--border-light)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '1.8rem',
                 marginBottom: '20px',
-                boxShadow: '0 4px 12px rgba(255, 107, 0, 0.15)',
+                boxShadow: '0 4px 12px var(--border-light)',
               }}
             >
               {card.icon}

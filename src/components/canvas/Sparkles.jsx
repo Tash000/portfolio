@@ -1,88 +1,204 @@
-import { useState, useRef, Suspense, useCallback, useEffect } from 'react';
+import { useState, useRef, Suspense, useCallback, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Preload } from '@react-three/drei';
+import { useTheme } from '../../context/ThemeContext';
 
-/**
- * Generate glowing ember/sparkle positions distributed vertically.
- */
-function generateSparklePositions(count, spreadX, spreadY, spreadZ) {
-  const positions = new Float32Array(count * 3);
-  for (let i = 0; i < count; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * spreadX;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * spreadY;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * spreadZ;
-  }
-  return positions;
+function hexToRgb(hex) {
+  // strips the leading '#' and parses r, g, b
+  const int = parseInt(hex.replace('#', ''), 16);
+  return [(int >> 16) & 255, (int >> 8) & 255, int & 255];
 }
 
-/**
- * Sparkle layer: floating warm embers that gently rise and drift with light turbulence.
- */
-function SparkleLayer({ count, color, size, speed, spreadX = 2.5, spreadY = 2.5, spreadZ = 1.5 }) {
-  const ref = useRef();
-  const [positions] = useState(() => generateSparklePositions(count, spreadX, spreadY, spreadZ));
+function lerpRgb(r1, g1, b1, r2, g2, b2, t) {
+  return [
+    (r1 + (r2 - r1) * t) / 255,
+    (g1 + (g2 - g1) * t) / 255,
+    (b1 + (b2 - b1) * t) / 255,
+  ];
+}
 
-  useFrame((_state, delta) => {
-    if (!ref.current) return;
-    // Gentle floating rotation and drift
-    ref.current.rotation.y += delta * speed * 0.08;
-    ref.current.rotation.x = Math.sin(_state.clock.elapsedTime * 0.3 * speed) * 0.05;
+function generatePositions(count, spread = 2.5, depth = 1.5) {
+  const arr = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    arr[i * 3]     = (Math.random() - 0.5) * spread;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * spread;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * depth;
+  }
+  return arr;
+}
+
+// --- Cool Phase: sharp 4-point star shape via small size + fast twinkle ---
+// --- Neutral Phase: soft round orbs (larger size) ---
+// --- Warm Phase: fiery embers (larger, brighter, faster)  ---
+
+function ParticleLayer({ count, spread, depth, baseSize, speed, colorStart, colorEnd, progress, phaseIn = 0, phaseOut = 1, sizeMultiplier = 1 }) {
+  const ref = useRef();
+  const [positions] = useState(() => generatePositions(count, spread, depth));
+
+  // how visible is this layer at the current progress?
+  const layerAlpha = useMemo(() => {
+    if (progress < phaseIn) return 0;
+    if (progress > phaseOut) return 0;
+    const rampUp   = phaseIn  < 0.01 ? 1 : Math.min(1, (progress - phaseIn)  / 0.08);
+    const rampDown = phaseOut > 0.99 ? 1 : Math.min(1, (phaseOut - progress) / 0.08);
+    return Math.min(rampUp, rampDown);
+  }, [progress, phaseIn, phaseOut]);
+
+  const [r1, g1, b1] = hexToRgb(colorStart);
+  const [r2, g2, b2] = hexToRgb(colorEnd);
+  // local blend factor within this layer's range
+  const localT = phaseOut === phaseIn ? 0 : Math.min(1, Math.max(0, (progress - phaseIn) / (phaseOut - phaseIn)));
+  const [nr, ng, nb] = lerpRgb(r1, g1, b1, r2, g2, b2, localT);
+
+  useFrame(({ clock }, delta) => {
+    if (!ref.current || layerAlpha < 0.001) return;
+    const t = clock.elapsedTime;
+    ref.current.rotation.y += delta * speed * 0.07;
+    ref.current.rotation.x  = Math.sin(t * 0.25 * speed) * 0.04;
+    ref.current.rotation.z  = Math.cos(t * 0.18 * speed) * 0.025;
   });
 
+  if (layerAlpha < 0.001) return null;
+
   return (
-    <group>
-      <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+    <group ref={ref}>
+      <Points positions={positions} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color={color}
-          size={size}
+          color={[nr, ng, nb]}
+          size={baseSize * sizeMultiplier}
           sizeAttenuation
           depthWrite={false}
-          opacity={0.7}
+          opacity={0.72 * layerAlpha}
         />
       </Points>
     </group>
   );
 }
 
-/**
- * High-Energy Sparkles Field with Warm Golden & Fiery Flame Embers
- */
-function SparklesField() {
+function ParticlesField() {
+  const { progress } = useTheme();
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const countMultiplier = isMobile ? 0.35 : 1;
+  const m = isMobile ? 0.35 : 1;
 
   return (
     <>
-      {/* Golden sparks layer */}
-      <SparkleLayer
-        count={Math.floor(700 * countMultiplier)}
-        color="#F59E0B"
-        size={0.007}
-        speed={0.4}
-        spreadX={3.0}
-        spreadY={3.0}
-        spreadZ={1.8}
+      {/* ===== COOL PHASE: Sharp star-like tiny points (icy blue-white) ===== */}
+      <ParticleLayer
+        key="cool-stars-1"
+        count={Math.floor(1200 * m)}
+        spread={3.2}
+        depth={1.8}
+        baseSize={0.004}      // very small = star-like twinkle effect
+        speed={0.3}
+        colorStart="#E0F2FE"   // Ice blue
+        colorEnd="#38BDF8"     // Sky blue
+        progress={progress}
+        phaseIn={0}
+        phaseOut={0.55}
+        sizeMultiplier={1}
       />
-      {/* Fiery orange embers */}
-      <SparkleLayer
-        count={Math.floor(450 * countMultiplier)}
-        color="#FF5722"
-        size={0.011}
+      <ParticleLayer
+        key="cool-stars-2"
+        count={Math.floor(600 * m)}
+        spread={2.6}
+        depth={1.3}
+        baseSize={0.0055}
+        speed={0.5}
+        colorStart="#BAE6FD"
+        colorEnd="#0284C7"
+        progress={progress}
+        phaseIn={0}
+        phaseOut={0.5}
+        sizeMultiplier={1}
+      />
+      <ParticleLayer
+        key="cool-stars-3"
+        count={Math.floor(300 * m)}
+        spread={2.0}
+        depth={1.0}
+        baseSize={0.007}
+        speed={0.9}
+        colorStart="#7DD3FC"
+        colorEnd="#6366F1"     // Indigo accent
+        progress={progress}
+        phaseIn={0}
+        phaseOut={0.45}
+        sizeMultiplier={1}
+      />
+
+      {/* ===== NEUTRAL PHASE: Soft round orbs (teal→amber) ===== */}
+      <ParticleLayer
+        key="neutral-orbs-1"
+        count={Math.floor(700 * m)}
+        spread={3.0}
+        depth={1.6}
+        baseSize={0.011}       // bigger = rounder, blobby look
+        speed={0.45}
+        colorStart="#2DD4BF"   // Teal
+        colorEnd="#F59E0B"     // Amber
+        progress={progress}
+        phaseIn={0.3}
+        phaseOut={0.75}
+        sizeMultiplier={1}
+      />
+      <ParticleLayer
+        key="neutral-orbs-2"
+        count={Math.floor(400 * m)}
+        spread={2.4}
+        depth={1.2}
+        baseSize={0.015}
         speed={0.7}
-        spreadX={2.4}
-        spreadY={2.4}
-        spreadZ={1.2}
+        colorStart="#14B8A6"
+        colorEnd="#FBBF24"
+        progress={progress}
+        phaseIn={0.35}
+        phaseOut={0.7}
+        sizeMultiplier={1}
       />
-      {/* Bright warm sunlight motes */}
-      <SparkleLayer
-        count={Math.floor(250 * countMultiplier)}
-        color="#FBBF24"
-        size={0.014}
-        speed={1.0}
-        spreadX={2.0}
-        spreadY={2.0}
-        spreadZ={0.9}
+
+      {/* ===== WARM PHASE: Fiery embers & sparkles ===== */}
+      <ParticleLayer
+        key="warm-embers-1"
+        count={Math.floor(800 * m)}
+        spread={3.0}
+        depth={1.8}
+        baseSize={0.007}
+        speed={0.5}
+        colorStart="#F59E0B"   // Amber
+        colorEnd="#FF6B00"     // Fire orange
+        progress={progress}
+        phaseIn={0.55}
+        phaseOut={1.0}
+        sizeMultiplier={1}
+      />
+      <ParticleLayer
+        key="warm-embers-2"
+        count={Math.floor(500 * m)}
+        spread={2.4}
+        depth={1.3}
+        baseSize={0.011}
+        speed={0.8}
+        colorStart="#FF5722"
+        colorEnd="#FF4500"
+        progress={progress}
+        phaseIn={0.6}
+        phaseOut={1.0}
+        sizeMultiplier={1}
+      />
+      <ParticleLayer
+        key="warm-embers-3"
+        count={Math.floor(280 * m)}
+        spread={1.9}
+        depth={0.9}
+        baseSize={0.015}
+        speed={1.1}
+        colorStart="#FBBF24"
+        colorEnd="#FFD700"
+        progress={progress}
+        phaseIn={0.65}
+        phaseOut={1.0}
+        sizeMultiplier={1}
       />
     </>
   );
@@ -95,7 +211,7 @@ export default function SparklesCanvas() {
     const canvas = gl.domElement;
     const handleContextLost = (e) => {
       e.preventDefault();
-      console.warn('WebGL context lost — Sparkles paused.');
+      console.warn('WebGL context lost – Particles paused.');
     };
     canvas.addEventListener('webglcontextlost', handleContextLost);
   }, []);
@@ -105,8 +221,7 @@ export default function SparklesCanvas() {
       ref={canvasRef}
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
+        top: 0, left: 0,
         width: '100vw',
         height: '100vh',
         zIndex: 0,
@@ -121,7 +236,7 @@ export default function SparklesCanvas() {
         onCreated={handleCreated}
       >
         <Suspense fallback={null}>
-          <SparklesField />
+          <ParticlesField />
         </Suspense>
         <Preload all />
       </Canvas>

@@ -80,7 +80,7 @@ const Projects = () => {
           Featured{' '}
           <span
             style={{
-              background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+              background: 'var(--gradient-flame)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -120,13 +120,13 @@ const Projects = () => {
               style={{
                 padding: '9px 18px',
                 borderRadius: '12px',
-                background: isSelected ? 'linear-gradient(135deg, #FF4500, #FF8A00)' : '#FFFFFF',
+                background: isSelected ? 'var(--gradient-flame)' : '#FFFFFF',
                 color: isSelected ? '#FFFFFF' : '#334155',
-                border: isSelected ? '1px solid transparent' : '1.5px solid #FED7AA',
+                border: isSelected ? '1px solid transparent' : '1.5px solid var(--border-light)',
                 fontSize: '0.9rem',
                 fontWeight: isSelected ? 700 : 500,
                 cursor: 'pointer',
-                boxShadow: isSelected ? '0 4px 14px rgba(255, 107, 0, 0.3)' : '0 2px 6px rgba(0,0,0,0.03)',
+                boxShadow: isSelected ? 'var(--shadow-flame)' : '0 2px 6px rgba(0,0,0,0.03)',
                 transition: 'all 0.25s ease',
               }}
               onMouseEnter={(e) => {
@@ -181,14 +181,14 @@ const Projects = () => {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = '0 16px 36px rgba(255, 107, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.05)';
-                e.currentTarget.style.borderColor = '#FF8A00';
+                e.currentTarget.style.boxShadow = '0 16px 36px var(--border-glow), 0 4px 12px rgba(0, 0, 0, 0.05)';
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 107, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02)';
                 e.currentTarget.style.borderColor = project.isPrivate
-                  ? 'rgba(234, 88, 12, 0.25)'
+                  ? 'var(--border-light)'
                   : '#F1F5F9';
               }}
             >
@@ -236,7 +236,7 @@ const Projects = () => {
                   <span
                     style={{
                       background: 'rgba(255, 255, 255, 0.95)',
-                      color: '#C2410C',
+                      color: 'var(--flame-700)',
                       fontWeight: 700,
                       fontSize: '0.75rem',
                       padding: '4px 10px',
@@ -250,7 +250,7 @@ const Projects = () => {
                   {project.isPrivate ? (
                     <span
                       style={{
-                        background: 'rgba(234, 88, 12, 0.95)',
+                        background: 'var(--flame-600)',
                         color: '#FFFFFF',
                         fontWeight: 700,
                         fontSize: '0.75rem',

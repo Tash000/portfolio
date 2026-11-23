@@ -13,7 +13,7 @@ export const navLinks = [
 ];
 
 export const heroData = {
-  greeting: "Hello World! I'm",
+  greeting: "Engineering the Future • I'm",
   name: "Toushif",
   avatar: "/avatar.png",
   tagline: "Innovating at the Edge of Robotics & Artificial Intelligence",

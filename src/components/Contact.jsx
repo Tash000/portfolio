@@ -42,7 +42,7 @@ const Contact = () => {
       >
         <span
           style={{
-            color: '#EA580C',
+            color: 'var(--flame-600)',
             fontSize: '0.92rem',
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -63,7 +63,7 @@ const Contact = () => {
           Get In{' '}
           <span
             style={{
-              background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+              background: 'var(--gradient-flame)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -94,8 +94,8 @@ const Contact = () => {
             background: '#FFFFFF',
             borderRadius: '24px',
             padding: '36px',
-            border: '1.5px solid #FED7AA',
-            boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06)',
+            border: '1.5px solid var(--border-light)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
           }}
         >
           <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '14px' }}>
@@ -116,8 +116,8 @@ const Contact = () => {
                 gap: '16px',
                 padding: '16px 20px',
                 borderRadius: '16px',
-                background: '#FFF7ED',
-                border: '1.5px solid #FDBA74',
+                background: 'var(--flame-50)',
+                border: '1.5px solid var(--border-light)',
                 color: '#0F172A',
                 textDecoration: 'none',
                 transition: 'all 0.25s ease',

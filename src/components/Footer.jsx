@@ -16,7 +16,7 @@ const Footer = () => {
         position: 'relative',
         zIndex: 10,
         background: '#FFFFFF',
-        borderTop: '2px solid #FED7AA',
+        borderTop: '2px solid var(--border-light)',
         padding: '48px 24px 32px',
         color: '#64748B',
       }}
@@ -50,7 +50,7 @@ const Footer = () => {
                 width: '32px',
                 height: '32px',
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+                background: 'var(--gradient-flame)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -85,7 +85,7 @@ const Footer = () => {
                   fontWeight: 600,
                   transition: 'color 0.2s ease',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#EA580C')}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--flame-600)')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = '#475569')}
               >
                 {link.title}

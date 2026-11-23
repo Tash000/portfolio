@@ -45,8 +45,8 @@ const Navbar = () => {
         background: scrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(255, 253, 249, 0.82)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(255, 107, 0, 0.15)',
-        boxShadow: scrolled ? '0 4px 20px rgba(255, 107, 0, 0.08)' : 'none',
+        borderBottom: '1px solid var(--border-light)',
+        boxShadow: scrolled ? '0 4px 20px var(--border-light)' : 'none',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
@@ -71,13 +71,13 @@ const Navbar = () => {
               width: '38px',
               height: '38px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+              background: 'var(--gradient-flame)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#fff',
               fontSize: '1.2rem',
-              boxShadow: '0 4px 14px rgba(255, 107, 0, 0.4)',
+              boxShadow: 'var(--shadow-flame)',
             }}
           >
             <FaFire />
@@ -87,7 +87,7 @@ const Navbar = () => {
               fontSize: '1.35rem',
               fontWeight: 800,
               letterSpacing: '-0.02em',
-              background: 'linear-gradient(135deg, #0F172A 30%, #EA580C 100%)',
+              background: 'linear-gradient(135deg, #0F172A 30%, var(--flame-600) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -110,17 +110,17 @@ const Navbar = () => {
                       display: 'block',
                       padding: '8px 16px',
                       borderRadius: '12px',
-                      color: isActive ? '#EA580C' : '#334155',
+                      color: isActive ? 'var(--flame-600)' : '#334155',
                       fontWeight: isActive ? 700 : 500,
                       fontSize: '0.92rem',
                       textDecoration: 'none',
-                      background: isActive ? 'rgba(255, 107, 0, 0.1)' : 'transparent',
+                      background: isActive ? 'var(--flame-50)' : 'transparent',
                       transition: 'all 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.color = '#EA580C';
-                        e.currentTarget.style.background = 'rgba(255, 107, 0, 0.06)';
+                        e.currentTarget.style.color = 'var(--flame-600)';
+                        e.currentTarget.style.background = 'var(--flame-50)';
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -151,20 +151,20 @@ const Navbar = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#334155',
-                background: 'rgba(255, 107, 0, 0.08)',
-                border: '1px solid rgba(255, 107, 0, 0.18)',
+                background: 'var(--flame-50)',
+                border: '1px solid var(--border-light)',
                 fontSize: '1.15rem',
                 textDecoration: 'none',
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#EA580C';
-                e.currentTarget.style.borderColor = '#EA580C';
+                e.currentTarget.style.color = 'var(--flame-600)';
+                e.currentTarget.style.borderColor = 'var(--flame-600)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = '#334155';
-                e.currentTarget.style.borderColor = 'rgba(255, 107, 0, 0.18)';
+                e.currentTarget.style.borderColor = 'var(--border-light)';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -194,9 +194,9 @@ const Navbar = () => {
               width: '42px',
               height: '42px',
               borderRadius: '12px',
-              background: 'rgba(255, 107, 0, 0.08)',
-              border: '1px solid rgba(255, 107, 0, 0.2)',
-              color: '#EA580C',
+              background: 'var(--flame-50)',
+              border: '1px solid var(--border-light)',
+              color: 'var(--flame-600)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

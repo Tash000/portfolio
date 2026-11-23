@@ -188,8 +188,8 @@ const Skills = () => {
                       width: '42px',
                       height: '42px',
                       borderRadius: '12px',
-                      background: '#FFF7ED',
-                      border: '1px solid #FDBA74',
+                      background: 'var(--flame-50)',
+                      border: '1px solid var(--border-light)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -202,7 +202,7 @@ const Skills = () => {
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.2 }}>
                       {discipline.title}
                     </h3>
-                    <div style={{ fontSize: '0.78rem', color: '#EA580C', fontWeight: 600, marginTop: '2px' }}>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--flame-600)', fontWeight: 600, marginTop: '2px' }}>
                       {discipline.subtitle}
                     </div>
                   </div>
@@ -220,9 +220,10 @@ const Skills = () => {
                     gap: '24px',
                     padding: '16px',
                     borderRadius: '18px',
-                    background: '#FFFDF9',
-                    border: '1px solid #FED7AA',
+                    background: 'var(--flame-50)',
+                    border: '1px solid var(--border-light)',
                     marginBottom: '20px',
+                    boxShadow: '0 2px 8px var(--border-glow)',
                   }}
                 >
                   <WheelChart
@@ -236,13 +237,13 @@ const Skills = () => {
                   {/* Highlights Summary */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                     <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '0.5px' }}>
-                      Leading Tech
+                      Leading Focus
                     </div>
                     <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0F172A' }}>
                       {discipline.items[0].name}
                     </div>
-                    <div style={{ fontSize: '0.82rem', color: '#EA580C', fontWeight: 700 }}>
-                      {discipline.items[0].percentage}% of total stack
+                    <div style={{ fontSize: '0.82rem', color: 'var(--flame-600)', fontWeight: 700 }}>
+                      {discipline.items[0].percentage}% of stack
                     </div>
                   </div>
                 </div>
@@ -251,12 +252,13 @@ const Skills = () => {
                 <div
                   style={{
                     width: '100%',
-                    height: '10px',
+                    height: '8px',
                     borderRadius: '9999px',
                     overflow: 'hidden',
                     display: 'flex',
+                    gap: '2px',
+                    backgroundColor: '#E2E8F0',
                     marginBottom: '18px',
-                    boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.06)',
                   }}
                 >
                   {discipline.items.map((item) => (
@@ -266,6 +268,7 @@ const Skills = () => {
                         width: `${item.percentage}%`,
                         height: '100%',
                         backgroundColor: item.color,
+                        borderRadius: '2px',
                         opacity: hoveredItem ? (hoveredItem === item.name ? 1 : 0.35) : 1,
                         transition: 'opacity 0.2s ease, transform 0.2s ease',
                       }}
@@ -279,7 +282,7 @@ const Skills = () => {
                   style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    columnGap: '16px',
+                    columnGap: '18px',
                     rowGap: '8px',
                   }}
                 >
@@ -295,24 +298,24 @@ const Skills = () => {
                           alignItems: 'center',
                           gap: '6px',
                           cursor: 'pointer',
-                          opacity: hoveredItem ? (isHovered ? 1 : 0.5) : 1,
+                          opacity: hoveredItem ? (isHovered ? 1 : 0.45) : 1,
                           transition: 'opacity 0.2s ease',
                         }}
                       >
                         <span
                           style={{
-                            width: '9px',
-                            height: '9px',
+                            width: '8px',
+                            height: '8px',
                             borderRadius: '50%',
                             backgroundColor: item.color,
                             display: 'inline-block',
                             flexShrink: 0,
                           }}
                         />
-                        <span style={{ fontSize: '0.88rem', fontWeight: 600, color: '#0F172A' }}>
+                        <span style={{ fontSize: '0.84rem', fontWeight: 600, color: '#0F172A' }}>
                           {item.name}
                         </span>
-                        <span style={{ fontSize: '0.84rem', color: '#64748B', fontWeight: 500 }}>
+                        <span style={{ fontSize: '0.82rem', color: '#64748B', fontWeight: 400 }}>
                           {item.percentage}%
                         </span>
                       </div>

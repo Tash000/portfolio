@@ -59,7 +59,7 @@ const Projects = () => {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
-            color: '#EA580C',
+            color: 'var(--flame-600)',
             fontSize: '0.92rem',
             fontWeight: 700,
             textTransform: 'uppercase',
@@ -131,13 +131,13 @@ const Projects = () => {
               }}
               onMouseEnter={(e) => {
                 if (!isSelected) {
-                  e.currentTarget.style.borderColor = '#FF8A00';
-                  e.currentTarget.style.background = '#FFF7ED';
+                  e.currentTarget.style.borderColor = 'var(--flame-500)';
+                  e.currentTarget.style.background = 'var(--flame-50)';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isSelected) {
-                  e.currentTarget.style.borderColor = '#FED7AA';
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
                   e.currentTarget.style.background = '#FFFFFF';
                 }
               }}
@@ -289,14 +289,15 @@ const Projects = () => {
                       position: 'absolute',
                       bottom: '12px',
                       left: '14px',
-                      background: 'linear-gradient(135deg, #FF4500, #F59E0B)',
+                      background: 'var(--gradient-flame)',
                       color: '#FFFFFF',
                       fontSize: '0.72rem',
                       fontWeight: 800,
-                      padding: '3px 9px',
-                      borderRadius: '6px',
+                      padding: '4px 10px',
+                      borderRadius: '8px',
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
+                      boxShadow: '0 2px 10px var(--border-glow)',
                     }}
                   >
                     ⭐ Featured
@@ -342,14 +343,15 @@ const Projects = () => {
                   {project.highlights && (
                     <div
                       style={{
-                        background: '#FFF7ED',
-                        padding: '8px 12px',
-                        borderRadius: '10px',
-                        borderLeft: '3px solid #EA580C',
+                        background: 'var(--flame-50)',
+                        padding: '10px 14px',
+                        borderRadius: '12px',
+                        borderLeft: '3px solid var(--flame-600)',
                         marginBottom: '18px',
-                        fontSize: '0.8rem',
-                        color: '#9A3412',
+                        fontSize: '0.82rem',
+                        color: 'var(--flame-800)',
                         fontWeight: 600,
+                        lineHeight: 1.5,
                       }}
                     >
                       💡 {project.highlights}
@@ -485,9 +487,9 @@ const Projects = () => {
                   width: '56px',
                   height: '56px',
                   borderRadius: '16px',
-                  background: '#FFF7ED',
-                  border: '1px solid #FDBA74',
-                  color: '#EA580C',
+                  background: 'var(--flame-50)',
+                  border: '1px solid var(--border-light)',
+                  color: 'var(--flame-600)',
                   fontSize: '1.6rem',
                   display: 'flex',
                   alignItems: 'center',
@@ -503,7 +505,7 @@ const Projects = () => {
               </h3>
               <p style={{ color: '#475569', fontSize: '0.95rem', marginBottom: '20px', lineHeight: 1.6 }}>
                 You are requesting access to{' '}
-                <strong style={{ color: '#EA580C' }}>{requestModalProject.title}</strong>. This codebase is currently private due to proprietary hardware integration or ongoing research.
+                <strong style={{ color: 'var(--flame-600)' }}>{requestModalProject.title}</strong>. This codebase is currently private due to proprietary hardware integration or ongoing research.
               </p>
 
               {requestSent ? (

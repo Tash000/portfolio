@@ -58,13 +58,14 @@ const Hero = () => {
               gap: '8px',
               padding: '6px 14px',
               borderRadius: '9999px',
-              background: '#FFF7ED',
-              border: '1px solid #FDBA74',
-              color: '#C2410C',
+              background: 'var(--flame-50)',
+              border: '1px solid var(--border-light)',
+              color: 'var(--flame-700)',
               fontSize: '0.85rem',
               fontWeight: 700,
               marginBottom: '20px',
-              boxShadow: '0 2px 8px rgba(255, 107, 0, 0.1)',
+              boxShadow: '0 2px 10px var(--border-glow)',
+              transition: 'all 0.3s ease',
             }}
           >
             <span
@@ -72,12 +73,12 @@ const Hero = () => {
                 width: '8px',
                 height: '8px',
                 borderRadius: '50%',
-                background: '#FF6B00',
-                boxShadow: '0 0 10px #FF6B00',
+                background: 'var(--flame-500)',
+                boxShadow: '0 0 10px var(--flame-500)',
                 display: 'inline-block',
               }}
             />
-            <span>🔥 Open for Robotics & AI Collaborations</span>
+            <span>Open for Robotics & AI Collaborations</span>
           </div>
 
           <h1
@@ -208,8 +209,8 @@ const Hero = () => {
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FF6B00';
-                e.currentTarget.style.color = '#FF6B00';
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
+                e.currentTarget.style.color = 'var(--flame-600)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
@@ -379,7 +380,7 @@ const Hero = () => {
           href="#about"
           aria-label="Scroll to About section"
           style={{
-            color: '#FF6B00',
+            color: 'var(--flame-600)',
             fontSize: '1.4rem',
             animation: 'sparkFloat 2s ease-in-out infinite',
             textDecoration: 'none',
@@ -389,8 +390,9 @@ const Hero = () => {
             width: '42px',
             height: '42px',
             borderRadius: '50%',
-            background: 'rgba(255, 107, 0, 0.08)',
-            border: '1px solid rgba(255, 107, 0, 0.25)',
+            background: 'var(--flame-50)',
+            border: '1px solid var(--border-light)',
+            boxShadow: '0 2px 8px var(--border-glow)',
           }}
         >
           <FiArrowDown />

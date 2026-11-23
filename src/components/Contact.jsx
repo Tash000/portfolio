@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiSend, FiUser, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
+import { FiMail, FiGithub, FiLinkedin, FiSend, FiUser, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
 import { socialLinks } from '../constants';
 
 const Contact = () => {
@@ -27,7 +27,7 @@ const Contact = () => {
       setIsSubmitted(true);
       const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-      window.location.href = `mailto:toushif@example.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:toushif.ahammad.m@gmail.com?subject=${subject}&body=${body}`;
     }, 500);
   };
 
@@ -166,21 +166,21 @@ const Contact = () => {
                 gap: '16px',
                 padding: '16px 20px',
                 borderRadius: '16px',
-                background: '#FFF7ED',
-                border: '1.5px solid #FDBA74',
+                background: 'var(--flame-50)',
+                border: '1.5px solid var(--border-light)',
                 color: '#0F172A',
                 textDecoration: 'none',
                 transition: 'all 0.25s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FF6B00';
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#FFEDD5';
+                e.currentTarget.style.boxShadow = '0 6px 18px var(--border-glow)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#FDBA74';
+                e.currentTarget.style.borderColor = 'var(--border-light)';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#FFF7ED';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <div
@@ -188,23 +188,75 @@ const Contact = () => {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #EA580C, #D97706)',
+                  background: 'var(--gradient-flame)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '1.3rem',
                   color: '#fff',
                   flexShrink: 0,
-                  boxShadow: '0 4px 12px rgba(234, 88, 12, 0.3)',
+                  boxShadow: '0 4px 12px var(--border-glow)',
                 }}
               >
                 <FiMail />
               </div>
               <div>
-                <div style={{ fontSize: '0.8rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
                   Email
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '1rem' }}>Send Direct Message</div>
+                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>{socialLinks.emailRaw}</div>
+              </div>
+            </a>
+
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                padding: '16px 20px',
+                borderRadius: '16px',
+                background: 'var(--flame-50)',
+                border: '1.5px solid var(--border-light)',
+                color: '#0F172A',
+                textDecoration: 'none',
+                transition: 'all 0.25s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 18px var(--border-glow)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border-light)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              <div
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: 'var(--gradient-flame)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.3rem',
+                  color: '#fff',
+                  flexShrink: 0,
+                  boxShadow: '0 4px 12px var(--border-glow)',
+                }}
+              >
+                <FiLinkedin />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
+                  LinkedIn
+                </div>
+                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>linkedin.com/in/toushif092025</div>
               </div>
             </a>
           </div>

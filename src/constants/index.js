@@ -175,5 +175,7 @@ export const experiences = [
 
 export const socialLinks = {
   github: "https://github.com/Tash000",
-  email: "mailto:toushif@example.com",
+  email: "mailto:toushif.ahammad.m@gmail.com",
+  emailRaw: "toushif.ahammad.m@gmail.com",
+  linkedin: "https://www.linkedin.com/in/toushif092025",
 };

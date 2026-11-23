@@ -37,7 +37,7 @@ const Projects = () => {
     const body = encodeURIComponent(
       `Hi Toushif,\n\nI was reviewing your portfolio and would like to request repository access / technical discussion for:\n\nProject: ${project.title}\nCategory: ${project.category}\n\nPlease let me know if we can connect.\n\nBest regards,`
     );
-    window.location.href = `mailto:toushif@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:toushif.ahammad.m@gmail.com?subject=${subject}&body=${body}`;
     setRequestSent(true);
     setTimeout(() => {
       setRequestModalProject(null);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowDown, FiGithub, FiMail, FiZap, FiCode } from 'react-icons/fi';
+import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiZap, FiCode } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa';
 import { heroData, socialLinks } from '../constants';
 import avatarImg from '../assets/avatar.png';
@@ -220,6 +220,40 @@ const Hero = () => {
               }}
             >
               <FiGithub />
+            </a>
+
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '14px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: '#FFFFFF',
+                border: '1.5px solid #E2E8F0',
+                color: '#1E293B',
+                fontSize: '1.3rem',
+                textDecoration: 'none',
+                transition: 'all 0.25s ease',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
+                e.currentTarget.style.color = 'var(--flame-600)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E2E8F0';
+                e.currentTarget.style.color = '#1E293B';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <FiLinkedin />
             </a>
           </div>
         </motion.div>

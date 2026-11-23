@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiMail, FiArrowUp } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa';
 import { socialLinks, navLinks } from '../constants';
 
@@ -138,7 +138,7 @@ const Footer = () => {
                 alignItems: 'center',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#EA580C';
+                e.currentTarget.style.color = 'var(--flame-600)';
                 e.currentTarget.style.transform = 'scale(1.15)';
               }}
               onMouseLeave={(e) => {
@@ -147,6 +147,29 @@ const Footer = () => {
               }}
             >
               <FiGithub />
+            </a>
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
+              style={{
+                color: '#475569',
+                fontSize: '1.25rem',
+                transition: 'color 0.2s ease, transform 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--flame-600)';
+                e.currentTarget.style.transform = 'scale(1.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#475569';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
+              <FiLinkedin />
             </a>
             <a
               href={socialLinks.email}
@@ -159,7 +182,7 @@ const Footer = () => {
                 alignItems: 'center',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#EA580C';
+                e.currentTarget.style.color = 'var(--flame-600)';
                 e.currentTarget.style.transform = 'scale(1.15)';
               }}
               onMouseLeave={(e) => {

@@ -1,16 +1,23 @@
-# React + Vite
+# Hi there, I'm Toushif 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> *Robotics & Autonomous Systems • Edge AI & Computer Vision • Embedded Microcontrollers*
 
-Currently, two official plugins are available:
+Since you're already here browsing the repo, why not check out the live portfolio?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🚀 **[View Live Portfolio →](https://tash000.github.io/portfolio/)**
 
-## React Compiler
+Built with a dynamic 2.5-minute cool-to-warm chromatic evolution, authentic GitHub repository telemetry, interactive discipline charts, and 3D floating canvas particles.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+### 📬 Wanna Reach Out?
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Whether you want to collaborate on a robotics project, talk edge AI pipelines, or just get in touch:
+
+- 📧 **Email**: [toushif.ahammad.m@gmail.com](mailto:toushif.ahammad.m@gmail.com)
+- 💼 **LinkedIn**: [linkedin.com/in/toushif092025](https://www.linkedin.com/in/toushif092025)
+- 🐙 **GitHub**: [@Tash000](https://github.com/Tash000)
+
+---
+
+*Open for Robotics & AI Collaborations.*

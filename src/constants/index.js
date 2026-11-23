@@ -130,7 +130,7 @@ export const experiences = [
     stageLabel: "Foundations & Learning",
     title: "Learning & Foundations: Vision, Hardware & Biomechanics",
     subtitle: "Rapid Prototyping, CAD & Machine Vision Exploration",
-    date: "2024",
+    date: "2022 — 2024",
     type: "Foundations",
     icon: "🛠️",
     points: [

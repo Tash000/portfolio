@@ -23,7 +23,7 @@ const About = () => {
             letterSpacing: '2px',
           }}
         >
-          Who I Am
+          Journey & Motivation
         </span>
         <h2
           style={{
@@ -34,7 +34,7 @@ const About = () => {
             letterSpacing: '-0.02em',
           }}
         >
-          Engineering With{' '}
+          From Hardware To{' '}
           <span
             style={{
               background: 'var(--gradient-flame)',
@@ -42,7 +42,7 @@ const About = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Passion & Energy
+            Autonomous AI
           </span>
         </h2>
         <p

@@ -27,13 +27,12 @@ export const heroData = {
     { value: "10+", label: "Robotics & AI Repos" },
     { value: "ESP32 & Arduino", label: "Microcontrollers & Hardware" },
     { value: "ROS & C++", label: "Robotics & Control Stack" },
-    { value: "100%", label: "Passion & Drive" },
   ],
 };
 
 export const aboutData = {
   intro:
-    "I am an enthusiastic robotics engineer and software innovator fueled by the challenge of bridging tangible hardware with cutting-edge artificial intelligence. Whether designing microcontroller systems on ESP32-S3, developing autonomous AGVs, or building AI copilots and developer automation tools, I bring relentless energy, precision, and curiosity to every project I take on.",
+    "I developed an early passion for fixing things and working hands-on with electronics and hardware. Understanding circuits and microcontrollers naturally evolved into building robotics and automation systems. As I learned to code and dove into software development, I expanded into artificial intelligence, autonomous agents, and computer vision. I thrive on learning new technologies every day and building solutions whenever an opportunity presents itself.",
   cards: [
     {
       title: "Robotics & Hardware",

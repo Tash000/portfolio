@@ -12,6 +12,10 @@ export default function ThemeControl() {
   const seconds = elapsedSecs % 60;
   const timeFormatted = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
+  const totalMinutes = Math.floor(THEME_TRANSITION_DURATION / 60);
+  const totalSeconds = THEME_TRANSITION_DURATION % 60;
+  const totalFormatted = `${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
+
   const phaseConfig = {
     cool: {
       name: 'Cool Sky',
@@ -103,7 +107,7 @@ export default function ThemeControl() {
             {/* Progress Bar & Timestamp */}
             <div style={{ marginBottom: '14px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#64748B', marginBottom: '4px', fontWeight: 600 }}>
-                <span>Evolution ({timeFormatted} / 1:45)</span>
+                <span>Evolution ({timeFormatted} / {totalFormatted})</span>
                 <span>{Math.round(progress * 100)}%</span>
               </div>
               <div

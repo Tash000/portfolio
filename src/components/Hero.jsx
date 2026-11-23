@@ -58,13 +58,14 @@ const Hero = () => {
               gap: '8px',
               padding: '6px 14px',
               borderRadius: '9999px',
-              background: '#FFF7ED',
-              border: '1px solid #FDBA74',
-              color: '#C2410C',
+              background: 'var(--flame-50)',
+              border: '1px solid var(--border-light)',
+              color: 'var(--flame-700)',
               fontSize: '0.85rem',
               fontWeight: 700,
               marginBottom: '20px',
-              boxShadow: '0 2px 8px rgba(255, 107, 0, 0.1)',
+              boxShadow: '0 2px 10px var(--border-glow)',
+              transition: 'all 0.3s ease',
             }}
           >
             <span
@@ -72,12 +73,12 @@ const Hero = () => {
                 width: '8px',
                 height: '8px',
                 borderRadius: '50%',
-                background: '#FF6B00',
-                boxShadow: '0 0 10px #FF6B00',
+                background: 'var(--flame-500)',
+                boxShadow: '0 0 10px var(--flame-500)',
                 display: 'inline-block',
               }}
             />
-            <span>🔥 Open for Robotics & AI Collaborations</span>
+            <span>Open for Robotics & AI Collaborations</span>
           </div>
 
           <h1
@@ -93,7 +94,7 @@ const Hero = () => {
             {heroData.greeting}{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #FF4500 0%, #FF6B00 50%, #FFA500 100%)',
+                background: 'var(--gradient-flame)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block',
@@ -109,7 +110,7 @@ const Hero = () => {
               minHeight: '2.5rem',
               fontSize: 'clamp(1.1rem, 2.4vw, 1.45rem)',
               fontWeight: 700,
-              color: '#EA580C',
+              color: 'var(--flame-600)',
               marginBottom: '16px',
               fontFamily: 'var(--font-main)',
             }}
@@ -120,7 +121,7 @@ const Hero = () => {
                 display: 'inline-block',
                 width: '2px',
                 height: '1.2em',
-                background: '#FF6B00',
+                background: 'var(--flame-500)',
                 verticalAlign: 'middle',
                 marginLeft: '4px',
                 animation: 'pulseFlameGlow 1s infinite',
@@ -208,8 +209,8 @@ const Hero = () => {
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#FF6B00';
-                e.currentTarget.style.color = '#FF6B00';
+                e.currentTarget.style.borderColor = 'var(--flame-500)';
+                e.currentTarget.style.color = 'var(--flame-600)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
@@ -267,8 +268,8 @@ const Hero = () => {
                 borderRadius: '50%',
                 margin: '0 auto 20px',
                 padding: '5px',
-                background: 'linear-gradient(135deg, #FF4500, #FF8A00, #FBBF24)',
-                boxShadow: '0 10px 30px rgba(255, 107, 0, 0.35)',
+                background: 'var(--gradient-flame)',
+                boxShadow: 'var(--shadow-flame)',
               }}
             >
               <img
@@ -284,7 +285,7 @@ const Hero = () => {
                   borderRadius: '50%',
                   objectFit: 'cover',
                   display: 'block',
-                  background: '#FFF7ED',
+                  background: 'var(--flame-50)',
                 }}
               />
             </div>
@@ -292,7 +293,7 @@ const Hero = () => {
             <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#0F172A', marginBottom: '4px' }}>
               Toushif
             </h3>
-            <p style={{ fontSize: '0.92rem', color: '#EA580C', fontWeight: 600, marginBottom: '20px' }}>
+            <p style={{ fontSize: '0.92rem', color: 'var(--flame-600)', fontWeight: 600, marginBottom: '20px' }}>
               Robotics & AI Systems Builder
             </p>
 
@@ -303,13 +304,13 @@ const Hero = () => {
                 gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: '12px',
                 textAlign: 'left',
-                borderTop: '1px solid rgba(255, 107, 0, 0.15)',
+                borderTop: '1px solid var(--border-light)',
                 paddingTop: '16px',
               }}
             >
-              <div style={{ background: '#FFF7ED', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#C2410C' }}>ESP32-S3</div>
-                <div style={{ fontSize: '0.75rem', color: '#7C2D12', fontWeight: 500 }}>Dual-Controller</div>
+              <div style={{ background: 'var(--flame-50)', padding: '10px 14px', borderRadius: '14px' }}>
+                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--flame-700)' }}>ESP32-S3</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--flame-900)', fontWeight: 500 }}>Dual-Controller</div>
               </div>
               <div style={{ background: '#FFFBEB', padding: '10px 14px', borderRadius: '14px' }}>
                 <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#B45309' }}>Jetson & ROS</div>
@@ -339,10 +340,10 @@ const Hero = () => {
           backdropFilter: 'blur(16px)',
           borderRadius: '20px',
           padding: '20px 32px',
-          border: '1px solid rgba(255, 107, 0, 0.18)',
-          boxShadow: '0 10px 30px rgba(255, 107, 0, 0.06)',
+          border: '1px solid var(--border-light)',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           gap: '24px',
           alignItems: 'center',
         }}
@@ -353,7 +354,7 @@ const Hero = () => {
               style={{
                 fontSize: '1.6rem',
                 fontWeight: 800,
-                background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
+                background: 'var(--gradient-flame)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -379,7 +380,7 @@ const Hero = () => {
           href="#about"
           aria-label="Scroll to About section"
           style={{
-            color: '#FF6B00',
+            color: 'var(--flame-600)',
             fontSize: '1.4rem',
             animation: 'sparkFloat 2s ease-in-out infinite',
             textDecoration: 'none',
@@ -389,8 +390,9 @@ const Hero = () => {
             width: '42px',
             height: '42px',
             borderRadius: '50%',
-            background: 'rgba(255, 107, 0, 0.08)',
-            border: '1px solid rgba(255, 107, 0, 0.25)',
+            background: 'var(--flame-50)',
+            border: '1px solid var(--border-light)',
+            boxShadow: '0 2px 8px var(--border-glow)',
           }}
         >
           <FiArrowDown />

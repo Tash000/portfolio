@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 
-// Total time to complete the cool -> neutral -> warm transition: 105 seconds (~1.75 minutes)
-export const THEME_TRANSITION_DURATION = 105;
+// Total time to complete the cool -> neutral -> warm transition: 150 seconds (2.5 minutes)
+export const THEME_TRANSITION_DURATION = 150;
 
 const ThemeContext = createContext({
   progress: 0,

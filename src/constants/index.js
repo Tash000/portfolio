@@ -27,13 +27,12 @@ export const heroData = {
     { value: "10+", label: "Robotics & AI Repos" },
     { value: "ESP32 & Arduino", label: "Microcontrollers & Hardware" },
     { value: "ROS & C++", label: "Robotics & Control Stack" },
-    { value: "100%", label: "Passion & Drive" },
   ],
 };
 
 export const aboutData = {
   intro:
-    "I am an enthusiastic robotics engineer and software innovator fueled by the challenge of bridging tangible hardware with cutting-edge artificial intelligence. Whether designing microcontroller systems on ESP32-S3, developing autonomous AGVs, or building AI copilots and developer automation tools, I bring relentless energy, precision, and curiosity to every project I take on.",
+    "I developed an early passion for fixing things and working hands-on with electronics and hardware. Understanding circuits and microcontrollers naturally evolved into building robotics and automation systems. As I learned to code and dove into software development, I expanded into artificial intelligence, autonomous agents, and computer vision. I thrive on learning new technologies every day and building solutions whenever an opportunity presents itself.",
   cards: [
     {
       title: "Robotics & Hardware",
@@ -72,16 +71,18 @@ export const aboutData = {
 export const disciplineBreakdowns = [
   {
     id: "languages",
-    title: "Codebase Languages",
+    title: "Languages",
     subtitle: "Real GitHub Repository Telemetry",
     icon: "💻",
-    description: "Calculated from total code volume across active repositories.",
+    description: "Calculated from total code volume across active GitHub repositories.",
     items: [
-      { name: "Python", percentage: 58.4, color: "#3572A5" },
-      { name: "TypeScript & JS", percentage: 17.2, color: "#3178C6" },
-      { name: "C / C++", percentage: 12.6, color: "#F34B7D" },
-      { name: "CSS & HTML", percentage: 8.8, color: "#563D7C" },
-      { name: "Shell & Others", percentage: 3.0, color: "#89E051" },
+      { name: "Python", percentage: 57.6, color: "#3572A5" },
+      { name: "TypeScript", percentage: 27.9, color: "#3178C6" },
+      { name: "CSS", percentage: 11.1, color: "#563D7C" },
+      { name: "JavaScript", percentage: 2.3, color: "#F1E05A" },
+      { name: "HTML", percentage: 0.9, color: "#E34C26" },
+      { name: "Shell", percentage: 0.1, color: "#89E051" },
+      { name: "Other", percentage: 0.1, color: "#94A3B8" },
     ],
   },
   {
@@ -129,7 +130,7 @@ export const experiences = [
     stageLabel: "Foundations & Learning",
     title: "Learning & Foundations: Vision, Hardware & Biomechanics",
     subtitle: "Rapid Prototyping, CAD & Machine Vision Exploration",
-    date: "2024",
+    date: "2022 — 2024",
     type: "Foundations",
     icon: "🛠️",
     points: [

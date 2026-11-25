@@ -177,7 +177,7 @@ const Hero = () => {
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
             <a
               href="#projects"
               className="btn-flame"
@@ -185,6 +185,9 @@ const Hero = () => {
                 padding: '14px 28px',
                 borderRadius: '14px',
                 fontSize: '1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
               }}
             >
               <FlameIcon size="1.2rem" /> Explore Projects
@@ -197,77 +200,12 @@ const Hero = () => {
                 padding: '13px 26px',
                 borderRadius: '14px',
                 fontSize: '1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
               }}
             >
               <MailIcon size="1.1rem" /> Get In Touch
-            </a>
-
-            <a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: '#FFFFFF',
-                border: '1.5px solid #E2E8F0',
-                color: '#1E293B',
-                fontSize: '1.3rem',
-                textDecoration: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--flame-500)';
-                e.currentTarget.style.color = 'var(--flame-600)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.color = '#1E293B';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <GitHubIcon />
-            </a>
-
-            <a
-              href={socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: '#FFFFFF',
-                border: '1.5px solid #E2E8F0',
-                color: '#1E293B',
-                fontSize: '1.3rem',
-                textDecoration: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--flame-500)';
-                e.currentTarget.style.color = 'var(--flame-600)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.color = '#1E293B';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <LinkedInIcon />
             </a>
           </div>
         </motion.div>
@@ -372,6 +310,92 @@ const Hero = () => {
                 <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#15803D' }}>Linux & Backend</div>
                 <div style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 500 }}>Embedded & Cloud</div>
               </div>
+            </div>
+
+            {/* Social Links inside Profile Card */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '12px',
+                marginTop: '12px',
+              }}
+            >
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  borderRadius: '14px',
+                  background: '#FFFFFF',
+                  border: '1.5px solid var(--border-light)',
+                  color: '#0F172A',
+                  textDecoration: 'none',
+                  fontSize: '0.86rem',
+                  fontWeight: 700,
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--flame-500)';
+                  e.currentTarget.style.color = 'var(--flame-600)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px var(--border-glow)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                  e.currentTarget.style.color = '#0F172A';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.03)';
+                }}
+              >
+                <GitHubIcon />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  borderRadius: '14px',
+                  background: '#FFFFFF',
+                  border: '1.5px solid var(--border-light)',
+                  color: '#0F172A',
+                  textDecoration: 'none',
+                  fontSize: '0.86rem',
+                  fontWeight: 700,
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--flame-500)';
+                  e.currentTarget.style.color = 'var(--flame-600)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px var(--border-glow)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                  e.currentTarget.style.color = '#0F172A';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.03)';
+                }}
+              >
+                <LinkedInIcon />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
         </motion.div>

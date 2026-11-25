@@ -10,7 +10,7 @@ import { PortfolioIcon, HourglassIcon, TimerIcon, ArrowRightIcon } from './icons
 
 const styles = {
   section: {
-    padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)',
+    padding: 'clamp(48px, 6vh, 72px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
     maxWidth: '1240px',
     margin: '0 auto',
     position: 'relative',
@@ -296,6 +296,10 @@ const Experience = () => {
           .vertical-timeline::before {
             background: var(--gradient-flame) !important;
             width: 3px !important;
+          }
+          .vertical-timeline {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
           }
         `}</style>
       </div>

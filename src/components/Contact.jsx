@@ -40,13 +40,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="contact" style={{ padding: 'clamp(20px, 3vh, 40px) clamp(16px, 4vw, 24px) clamp(60px, 8vh, 80px)', maxWidth: '1280px', margin: '0 auto' }}>
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        style={{ textAlign: 'center', marginBottom: '50px' }}
+        style={{ textAlign: 'center', marginBottom: '28px' }}
       >
         <span
           style={{
@@ -89,7 +89,7 @@ const Contact = () => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))',
           gap: 'clamp(20px, 4vw, 36px)',
-          alignItems: 'start',
+          alignItems: 'stretch',
         }}
       >
         {/* Left Column: Direct Info Cards */}
@@ -104,16 +104,23 @@ const Contact = () => {
             padding: 'clamp(20px, 4vw, 36px)',
             border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            boxSizing: 'border-box',
           }}
         >
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '14px' }}>
-            Ready to ignite new ideas
-          </h3>
-          <p style={{ color: '#475569', lineHeight: '1.7', marginBottom: '28px', fontSize: '0.96rem' }}>
-            I am passionate about building tangible engineering solutions. Whether you are an engineer, researcher, recruiter, or fellow builder, I'd love to hear from you.
-          </p>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '14px' }}>
+              Ready to ignite new ideas
+            </h3>
+            <p style={{ color: '#475569', lineHeight: '1.7', marginBottom: '28px', fontSize: '0.96rem' }}>
+              I am passionate about building tangible engineering solutions. Whether you are an engineer, researcher, recruiter, or fellow builder, I'd love to hear from you.
+            </p>
+          </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: 'auto' }}>
             <a
               href={socialLinks.github}
               target="_blank"
@@ -280,12 +287,17 @@ const Contact = () => {
             background: '#FFFFFF',
             borderRadius: '24px',
             padding: 'clamp(20px, 4vw, 36px)',
-            border: '1.5px solid #FED7AA',
+            border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {isSubmitted ? (
-            <div style={{ textAlign: 'center', padding: '36px 16px' }}>
+            <div style={{ textAlign: 'center', padding: '36px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
               <CheckCircleIcon style={{ fontSize: '3.5rem', color: '#16A34A', marginBottom: '16px' }} />
               <h4 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', marginBottom: '10px' }}>
                 Message Client Triggered!
@@ -307,7 +319,7 @@ const Contact = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px', height: '100%', justifyContent: 'space-between' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                   <UserIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Name
@@ -380,7 +392,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                   <MessageSquareIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Message
                 </label>
@@ -393,6 +405,8 @@ const Contact = () => {
                   placeholder="What would you like to build or discuss?"
                   style={{
                     width: '100%',
+                    flex: 1,
+                    minHeight: '120px',
                     padding: '13px 16px',
                     borderRadius: '14px',
                     background: '#F8FAFC',
@@ -400,7 +414,7 @@ const Contact = () => {
                     color: '#0F172A',
                     fontSize: '0.95rem',
                     outline: 'none',
-                    resize: 'vertical',
+                    resize: 'none',
                     transition: 'all 0.25s ease',
                     fontFamily: 'inherit',
                   }}
@@ -426,7 +440,7 @@ const Contact = () => {
                   borderRadius: '14px',
                   fontSize: '1rem',
                   justifyContent: 'center',
-                  marginTop: '6px',
+                  marginTop: 'auto',
                 }}
               >
                 <SendIcon /> {isSubmitting ? 'Sending...' : 'Send Message'}

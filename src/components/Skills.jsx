@@ -97,14 +97,14 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="skills" style={{ padding: 'clamp(28px, 3.5vh, 42px) clamp(16px, 4vw, 24px) clamp(24px, 3vh, 36px)', maxWidth: '1280px', margin: '0 auto' }}>
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        style={{ textAlign: 'center', marginBottom: '50px' }}
+        style={{ textAlign: 'center', marginBottom: '28px' }}
       >
         <h2
           style={{

@@ -10,14 +10,14 @@ import { PortfolioIcon, HourglassIcon, TimerIcon, ArrowRightIcon } from './icons
 
 const styles = {
   section: {
-    padding: 'clamp(48px, 6vh, 72px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
+    padding: 'clamp(28px, 3.5vh, 42px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
     maxWidth: '1240px',
     margin: '0 auto',
     position: 'relative',
   },
   titleWrapper: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '24px',
   },
   eyebrow: {
     color: 'var(--flame-600)',

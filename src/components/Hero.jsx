@@ -25,12 +25,11 @@ const Hero = () => {
     <section
       id="hero"
       style={{
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: 'clamp(140px, 16vh, 180px) clamp(16px, 4vw, 24px) clamp(40px, 6vh, 60px)',
+        padding: 'clamp(130px, 14vh, 160px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
         maxWidth: '1280px',
         margin: '0 auto',
       }}
@@ -384,7 +383,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
         style={{
-          marginTop: '60px',
+          marginTop: '32px',
           background: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(16px)',
           borderRadius: '20px',
@@ -422,7 +421,7 @@ const Hero = () => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          marginTop: '40px',
+          marginTop: '20px',
         }}
       >
         <a

@@ -42,7 +42,7 @@ export default function ParallaxBackground() {
         zIndex: 0,
       }}
     >
-      {/* Parallax Ambient Blob 1 — Top Left / Mid (Drifts up slowly with scroll) */}
+      {/* Parallax Ambient Blob 1 — Top Left / Mid (Drifts up with enhanced scroll sensitivity) */}
       <div
         style={{
           position: 'absolute',
@@ -53,14 +53,14 @@ export default function ParallaxBackground() {
           borderRadius: '50%',
           background: 'radial-gradient(circle, var(--flame-300) 0%, var(--flame-100) 45%, transparent 70%)',
           filter: 'blur(90px)',
-          opacity: 0.25 - scrollRatio * 0.12,
-          transform: `translate3d(0, ${scrollY * -0.15}px, 0)`,
+          opacity: 0.28 - scrollRatio * 0.12,
+          transform: `translate3d(0, ${scrollY * -0.28}px, 0)`,
           willChange: 'transform, opacity',
           transition: 'opacity 0.3s ease',
         }}
       />
 
-      {/* Parallax Ambient Blob 2 — Mid Right (Drifts down with scroll depth) */}
+      {/* Parallax Ambient Blob 2 — Mid Right (Drifts down with enhanced scroll depth) */}
       <div
         style={{
           position: 'absolute',
@@ -71,14 +71,14 @@ export default function ParallaxBackground() {
           borderRadius: '50%',
           background: 'radial-gradient(circle, var(--amber-gold) 0%, var(--flame-200) 50%, transparent 72%)',
           filter: 'blur(100px)',
-          opacity: 0.14 + Math.sin(scrollRatio * Math.PI) * 0.18,
-          transform: `translate3d(0, ${scrollY * 0.22}px, 0)`,
+          opacity: 0.16 + Math.sin(scrollRatio * Math.PI) * 0.20,
+          transform: `translate3d(0, ${scrollY * 0.38}px, 0)`,
           willChange: 'transform, opacity',
           transition: 'opacity 0.3s ease',
         }}
       />
 
-      {/* Parallax Ambient Blob 3 — Deep Bottom (Awakens toward the lower sections) */}
+      {/* Parallax Ambient Blob 3 — Deep Bottom (Awakens with enhanced response toward lower sections) */}
       <div
         style={{
           position: 'absolute',
@@ -89,8 +89,8 @@ export default function ParallaxBackground() {
           borderRadius: '50%',
           background: 'radial-gradient(circle, var(--solar-red) 0%, var(--flame-400) 45%, transparent 70%)',
           filter: 'blur(95px)',
-          opacity: 0.08 + scrollRatio * 0.22,
-          transform: `translate3d(0, ${scrollY * -0.12}px, 0)`,
+          opacity: 0.10 + scrollRatio * 0.24,
+          transform: `translate3d(0, ${scrollY * -0.24}px, 0)`,
           willChange: 'transform, opacity',
           transition: 'opacity 0.3s ease',
         }}

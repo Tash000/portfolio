@@ -385,8 +385,8 @@ function ScrollParallaxRig() {
     const onScroll = () => {
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
       const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
-      // Shifts camera downwards smoothly as user scrolls through the portfolio
-      targetY.current = -ratio * 0.85;
+      // Shifts camera downwards smoothly as user scrolls through the portfolio with enhanced optical depth
+      targetY.current = -ratio * 1.5;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -395,9 +395,10 @@ function ScrollParallaxRig() {
 
   useFrame(() => {
     // Smooth lerp to prevent jittery camera jump
-    currentY.current += (targetY.current - currentY.current) * 0.06;
+    currentY.current += (targetY.current - currentY.current) * 0.08;
     camera.position.y = currentY.current;
-    camera.position.x = Math.sin(currentY.current * Math.PI) * 0.05;
+    camera.position.x = Math.sin(currentY.current * Math.PI) * 0.08;
+    camera.rotation.z = Math.sin(currentY.current * Math.PI) * 0.03;
   });
 
   return null;

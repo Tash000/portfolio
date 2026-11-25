@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiLinkedin, FiSend, FiUser, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
+import {
+  GitHubIcon,
+  MailIcon,
+  LinkedInIcon,
+  CheckCircleIcon,
+  UserIcon,
+  MessageSquareIcon,
+  SendIcon,
+} from './icons/Icons';
 import { socialLinks } from '../constants';
 
 const Contact = () => {
@@ -32,13 +40,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="contact" style={{ padding: 'clamp(20px, 3vh, 40px) clamp(16px, 4vw, 24px) clamp(60px, 8vh, 80px)', maxWidth: '1280px', margin: '0 auto' }}>
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        style={{ textAlign: 'center', marginBottom: '50px' }}
+        style={{ textAlign: 'center', marginBottom: '28px' }}
       >
         <span
           style={{
@@ -81,7 +89,7 @@ const Contact = () => {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))',
           gap: 'clamp(20px, 4vw, 36px)',
-          alignItems: 'start',
+          alignItems: 'stretch',
         }}
       >
         {/* Left Column: Direct Info Cards */}
@@ -93,19 +101,26 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(20px, 4vw, 36px)',
+            padding: 'clamp(20px, 3vw, 30px)',
             border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            boxSizing: 'border-box',
           }}
         >
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '14px' }}>
-            Ready to ignite new ideas
-          </h3>
-          <p style={{ color: '#475569', lineHeight: '1.7', marginBottom: '28px', fontSize: '0.96rem' }}>
-            I am passionate about building tangible engineering solutions. Whether you are an engineer, researcher, recruiter, or fellow builder, I'd love to hear from you.
-          </p>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', marginBottom: '14px' }}>
+              Ready to ignite new ideas
+            </h3>
+            <p style={{ color: '#475569', lineHeight: '1.7', marginBottom: '28px', fontSize: '0.96rem' }}>
+              I am passionate about building tangible engineering solutions. Whether you are an engineer, researcher, recruiter, or fellow builder, I'd love to hear from you.
+            </p>
+          </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: 'auto' }}>
             <a
               href={socialLinks.github}
               target="_blank"
@@ -113,8 +128,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -135,26 +150,38 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px rgba(255, 107, 0, 0.3)',
                 }}
               >
-                <FiGithub />
+                <GitHubIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   GitHub
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '1rem' }}>github.com/Tash000</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.85rem, 1.8vw, 0.95rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="github.com/Tash000"
+                >
+                  github.com/Tash000
+                </div>
               </div>
             </a>
 
@@ -163,8 +190,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -185,26 +212,38 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'var(--gradient-flame)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px var(--border-glow)',
                 }}
               >
-                <FiMail />
+                <MailIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   Email
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>{socialLinks.emailRaw}</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.78rem, 1.8vw, 0.92rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title={socialLinks.emailRaw}
+                >
+                  {socialLinks.emailRaw}
+                </div>
               </div>
             </a>
 
@@ -215,8 +254,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -237,26 +276,38 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'var(--gradient-flame)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px var(--border-glow)',
                 }}
               >
-                <FiLinkedin />
+                <LinkedInIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   LinkedIn
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>linkedin.com/in/toushif092025</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.78rem, 1.8vw, 0.92rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="linkedin.com/in/toushif092025"
+                >
+                  linkedin.com/in/toushif092025
+                </div>
               </div>
             </a>
           </div>
@@ -271,14 +322,19 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(20px, 4vw, 36px)',
-            border: '1.5px solid #FED7AA',
+            padding: 'clamp(20px, 3vw, 30px)',
+            border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            boxSizing: 'border-box',
           }}
         >
           {isSubmitted ? (
-            <div style={{ textAlign: 'center', padding: '36px 16px' }}>
-              <FiCheckCircle style={{ fontSize: '3.5rem', color: '#16A34A', marginBottom: '16px' }} />
+            <div style={{ textAlign: 'center', padding: '36px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+              <CheckCircleIcon style={{ fontSize: '3.5rem', color: '#16A34A', marginBottom: '16px' }} />
               <h4 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', marginBottom: '10px' }}>
                 Message Client Triggered!
               </h4>
@@ -299,10 +355,10 @@ const Contact = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px', height: '100%', justifyContent: 'space-between' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiUser style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Name
+                  <UserIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Name
                 </label>
                 <input
                   type="text"
@@ -338,7 +394,7 @@ const Contact = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiMail style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Email
+                  <MailIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Email
                 </label>
                 <input
                   type="email"
@@ -372,9 +428,9 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiMessageSquare style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Message
+                  <MessageSquareIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Message
                 </label>
                 <textarea
                   name="message"
@@ -385,6 +441,8 @@ const Contact = () => {
                   placeholder="What would you like to build or discuss?"
                   style={{
                     width: '100%',
+                    flex: 1,
+                    minHeight: '120px',
                     padding: '13px 16px',
                     borderRadius: '14px',
                     background: '#F8FAFC',
@@ -392,7 +450,7 @@ const Contact = () => {
                     color: '#0F172A',
                     fontSize: '0.95rem',
                     outline: 'none',
-                    resize: 'vertical',
+                    resize: 'none',
                     transition: 'all 0.25s ease',
                     fontFamily: 'inherit',
                   }}
@@ -418,10 +476,10 @@ const Contact = () => {
                   borderRadius: '14px',
                   fontSize: '1rem',
                   justifyContent: 'center',
-                  marginTop: '6px',
+                  marginTop: 'auto',
                 }}
               >
-                <FiSend /> {isSubmitting ? 'Sending...' : 'Send Message'}
+                <SendIcon /> {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           )}

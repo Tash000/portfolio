@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiZap, FiCode } from 'react-icons/fi';
-import { FaFire } from 'react-icons/fa';
+import { FlameIcon, MailIcon, GitHubIcon, LinkedInIcon, ArrowDownIcon, PortfolioIcon } from './icons/Icons';
 import { heroData, socialLinks } from '../constants';
 import avatarImg from '../assets/avatar.png';
 
@@ -26,12 +25,11 @@ const Hero = () => {
     <section
       id="hero"
       style={{
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: 'clamp(90px, 12vh, 130px) clamp(16px, 4vw, 24px) clamp(40px, 6vh, 60px)',
+        padding: 'clamp(130px, 14vh, 160px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
         maxWidth: '1280px',
         margin: '0 auto',
       }}
@@ -143,27 +141,43 @@ const Hero = () => {
 
           {/* Pill Badges */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '36px' }}>
-            {heroData.badges.map((badge, idx) => (
-              <span
-                key={idx}
-                style={{
-                  padding: '6px 12px',
-                  borderRadius: '10px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(255, 107, 0, 0.2)',
-                  fontSize: '0.82rem',
-                  fontWeight: 600,
-                  color: '#334155',
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
-                }}
-              >
-                {badge.label}
-              </span>
-            ))}
+            {heroData.badges.map((badge, idx) => {
+              const emojiMatch = badge.label.match(/^(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)\s+(.+)$/u);
+              const badgeIcon = badge.icon || (emojiMatch ? emojiMatch[1] : null);
+              const badgeText = emojiMatch ? emojiMatch[2] : badge.label;
+
+              return (
+                <span
+                  key={idx}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    borderRadius: '10px',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(255, 107, 0, 0.2)',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    color: '#334155',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  }}
+                >
+                  {badgeIcon && (
+                    <PortfolioIcon
+                      name={badgeIcon}
+                      size="1em"
+                      color={badge.color || 'var(--flame-600)'}
+                    />
+                  )}
+                  <span>{badgeText}</span>
+                </span>
+              );
+            })}
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
             <a
               href="#projects"
               className="btn-flame"
@@ -171,9 +185,12 @@ const Hero = () => {
                 padding: '14px 28px',
                 borderRadius: '14px',
                 fontSize: '1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
               }}
             >
-              <FaFire style={{ fontSize: '1.2rem' }} /> Explore Projects
+              <FlameIcon size="1.2rem" /> Explore Projects
             </a>
 
             <a
@@ -183,77 +200,12 @@ const Hero = () => {
                 padding: '13px 26px',
                 borderRadius: '14px',
                 fontSize: '1rem',
-              }}
-            >
-              <FiMail style={{ fontSize: '1.1rem' }} /> Get In Touch
-            </a>
-
-            <a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '14px',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                background: '#FFFFFF',
-                border: '1.5px solid #E2E8F0',
-                color: '#1E293B',
-                fontSize: '1.3rem',
-                textDecoration: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--flame-500)';
-                e.currentTarget.style.color = 'var(--flame-600)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.color = '#1E293B';
-                e.currentTarget.style.transform = 'translateY(0)';
+                gap: '8px',
               }}
             >
-              <FiGithub />
-            </a>
-
-            <a
-              href={socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '14px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: '#FFFFFF',
-                border: '1.5px solid #E2E8F0',
-                color: '#1E293B',
-                fontSize: '1.3rem',
-                textDecoration: 'none',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--flame-500)';
-                e.currentTarget.style.color = 'var(--flame-600)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.color = '#1E293B';
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
-            >
-              <FiLinkedin />
+              <MailIcon size="1.1rem" /> Get In Touch
             </a>
           </div>
         </motion.div>
@@ -343,21 +295,107 @@ const Hero = () => {
               }}
             >
               <div style={{ background: 'var(--flame-50)', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--flame-700)' }}>ESP32-S3</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--flame-900)', fontWeight: 500 }}>Dual-Controller</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--flame-700)' }}>Designer</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--flame-900)', fontWeight: 500 }}>CAD & Hardware</div>
               </div>
               <div style={{ background: '#FFFBEB', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#B45309' }}>Jetson & ROS</div>
-                <div style={{ fontSize: '0.75rem', color: '#78350F', fontWeight: 500 }}>Edge Vision</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#B45309' }}>Python & C++</div>
+                <div style={{ fontSize: '0.75rem', color: '#78350F', fontWeight: 500 }}>Systems & Logic</div>
               </div>
               <div style={{ background: '#FFF1F2', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#BE123C' }}>Edge AI & ML</div>
-                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Benchmarking</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#BE123C' }}>AI & ML</div>
+                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Vision & Agents</div>
               </div>
               <div style={{ background: '#F0FDF4', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#15803D' }}>Autonomous</div>
-                <div style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 500 }}>AGV Logic</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#15803D' }}>Linux & Backend</div>
+                <div style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 500 }}>Embedded & Cloud</div>
               </div>
+            </div>
+
+            {/* Social Links inside Profile Card */}
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '12px',
+                marginTop: '12px',
+              }}
+            >
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  borderRadius: '14px',
+                  background: '#FFFFFF',
+                  border: '1.5px solid var(--border-light)',
+                  color: '#0F172A',
+                  textDecoration: 'none',
+                  fontSize: '0.86rem',
+                  fontWeight: 700,
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--flame-500)';
+                  e.currentTarget.style.color = 'var(--flame-600)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px var(--border-glow)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                  e.currentTarget.style.color = '#0F172A';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.03)';
+                }}
+              >
+                <GitHubIcon />
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  borderRadius: '14px',
+                  background: '#FFFFFF',
+                  border: '1.5px solid var(--border-light)',
+                  color: '#0F172A',
+                  textDecoration: 'none',
+                  fontSize: '0.86rem',
+                  fontWeight: 700,
+                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--flame-500)';
+                  e.currentTarget.style.color = 'var(--flame-600)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 16px var(--border-glow)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-light)';
+                  e.currentTarget.style.color = '#0F172A';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.03)';
+                }}
+              >
+                <LinkedInIcon />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
         </motion.div>
@@ -369,7 +407,7 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
         style={{
-          marginTop: '60px',
+          marginTop: '32px',
           background: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(16px)',
           borderRadius: '20px',
@@ -407,7 +445,7 @@ const Hero = () => {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          marginTop: '40px',
+          marginTop: '20px',
         }}
       >
         <a
@@ -429,7 +467,7 @@ const Hero = () => {
             boxShadow: '0 2px 8px var(--border-glow)',
           }}
         >
-          <FiArrowDown />
+          <ArrowDownIcon />
         </a>
       </div>
     </section>

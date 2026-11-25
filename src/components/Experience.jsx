@@ -6,17 +6,18 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { experiences } from '../constants';
+import { PortfolioIcon, HourglassIcon, TimerIcon, ArrowRightIcon } from './icons/Icons';
 
 const styles = {
   section: {
-    padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)',
+    padding: 'clamp(28px, 3.5vh, 42px) clamp(16px, 4vw, 24px) clamp(16px, 2.5vh, 28px)',
     maxWidth: '1240px',
     margin: '0 auto',
     position: 'relative',
   },
   titleWrapper: {
     textAlign: 'center',
-    marginBottom: '40px',
+    marginBottom: '24px',
   },
   eyebrow: {
     color: 'var(--flame-600)',
@@ -57,6 +58,9 @@ const styles = {
     flexWrap: 'wrap',
   },
   toggleBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
     padding: '8px 18px',
     borderRadius: '999px',
     fontSize: '0.85rem',
@@ -182,9 +186,6 @@ const Experience = () => {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <motion.span style={styles.eyebrow} variants={titleVariants}>
-            Journey & Technical Evolution
-          </motion.span>
           <motion.h2 style={styles.title} variants={titleVariants}>
             Engineering{' '}
             <span
@@ -218,7 +219,10 @@ const Experience = () => {
                 boxShadow: order === 'chronological' ? 'var(--shadow-flame)' : 'none',
               }}
             >
-              ⏳ Chronological: Past → Present
+              <HourglassIcon size="1em" />
+              <span>Chronological: Past</span>
+              <ArrowRightIcon size="0.95em" />
+              <span>Present</span>
             </button>
             <button
               onClick={() => setOrder('reverse')}
@@ -230,7 +234,10 @@ const Experience = () => {
                 boxShadow: order === 'reverse' ? 'var(--shadow-flame)' : 'none',
               }}
             >
-              ⏱️ Latest First: Present → Past
+              <TimerIcon size="1em" />
+              <span>Latest First: Present</span>
+              <ArrowRightIcon size="0.95em" />
+              <span>Past</span>
             </button>
           </div>
         </motion.div>
@@ -248,9 +255,11 @@ const Experience = () => {
               contentArrowStyle={contentArrowStyle}
               iconStyle={iconStyle}
               icon={
-                <span style={{ fontSize: '1.35rem' }} role="img" aria-label={exp.title}>
-                  {exp.icon || '🛠️'}
-                </span>
+                <PortfolioIcon
+                  name={exp.icon || '🛠️'}
+                  size="1.35rem"
+                  aria-label={exp.title}
+                />
               }
               visible={isInView}
             >
@@ -287,6 +296,23 @@ const Experience = () => {
           .vertical-timeline::before {
             background: var(--gradient-flame) !important;
             width: 3px !important;
+          }
+          .vertical-timeline {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+          }
+          .vertical-timeline-element-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          .vertical-timeline-element-icon svg {
+            position: static !important;
+            left: auto !important;
+            top: auto !important;
+            margin: 0 !important;
+            width: 24px !important;
+            height: 24px !important;
           }
         `}</style>
       </div>

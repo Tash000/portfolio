@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiGithub, FiMail } from 'react-icons/fi';
-import { FaFire } from 'react-icons/fa';
+import { FlameIcon, GitHubIcon, MailIcon, MenuIcon, CloseIcon } from './icons/Icons';
 import { navLinks, socialLinks } from '../constants';
 
 const Navbar = () => {
@@ -80,7 +79,7 @@ const Navbar = () => {
               boxShadow: 'var(--shadow-flame)',
             }}
           >
-            <FaFire />
+            <FlameIcon />
           </div>
           <span
             style={{
@@ -168,7 +167,7 @@ const Navbar = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <FiGithub />
+              <GitHubIcon />
             </a>
 
             <a
@@ -180,7 +179,7 @@ const Navbar = () => {
                 fontSize: '0.88rem',
               }}
             >
-              <FiMail /> Let's Connect
+              <MailIcon /> Let's Connect
             </a>
           </div>
         </div>
@@ -204,7 +203,7 @@ const Navbar = () => {
               cursor: 'pointer',
             }}
           >
-            {toggle ? <FiX /> : <FiMenu />}
+            {toggle ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
       </div>
@@ -270,7 +269,7 @@ const Navbar = () => {
                   fontWeight: 600,
                 }}
               >
-                <FiGithub /> GitHub
+                <GitHubIcon /> GitHub
               </a>
               <a
                 href="#contact"
@@ -289,7 +288,7 @@ const Navbar = () => {
                   fontWeight: 600,
                 }}
               >
-                <FiMail /> Contact
+                <MailIcon /> Contact
               </a>
             </div>
           </motion.div>

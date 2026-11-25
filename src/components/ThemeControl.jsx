@@ -1,7 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { FiPlay, FiPause } from 'react-icons/fi';
+import {
+  SnowflakeIcon,
+  CloudSunIcon,
+  FlameIcon,
+  StarFourPointIcon,
+  BubbleIcon,
+  SparkleIcon,
+  PlayIcon,
+  PauseIcon,
+} from './icons/Icons';
 
 export default function ThemeControl() {
   const { progress, themePhase, setProgress, isPaused, togglePause } = useTheme();
@@ -9,29 +18,32 @@ export default function ThemeControl() {
   const phaseConfig = {
     cool: {
       name: 'Cool Sky',
-      icon: '❄️',
+      icon: <SnowflakeIcon color="#0284C7" />,
       color: '#0284C7',
       bg: 'rgba(240, 249, 255, 0.95)',
       border: '#BAE6FD',
-      shape: '★ Floating Stars',
+      shapeIcon: <StarFourPointIcon size="0.9em" />,
+      shape: 'Floating Stars',
       description: 'Icy cyan & cobalt tones with razor-sharp diamond stars',
     },
     neutral: {
       name: 'Neutral Bloom',
-      icon: '⛅',
+      icon: <CloudSunIcon color="#0D9488" />,
       color: '#0D9488',
       bg: 'rgba(240, 253, 250, 0.95)',
       border: '#99F6E4',
-      shape: '● Water Bubbles',
+      shapeIcon: <BubbleIcon size="0.9em" />,
+      shape: 'Water Bubbles',
       description: 'Balanced emerald & teal hues with gentle translucent spheres',
     },
     warm: {
       name: 'Solar Flame',
-      icon: '🔥',
+      icon: <FlameIcon color="#EA580C" />,
       color: '#EA580C',
       bg: 'rgba(255, 247, 237, 0.95)',
       border: '#FED7AA',
-      shape: '✦ Fiery Sparkles',
+      shapeIcon: <SparkleIcon size="0.9em" />,
+      shape: 'Fiery Sparkles',
       description: 'Radiant ember & flame palette with high-energy cross flares',
     },
   }[themePhase];
@@ -98,6 +110,9 @@ export default function ThemeControl() {
                 </span>
                 <span
                   style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
                     fontSize: '0.72rem',
                     fontWeight: 700,
                     padding: '2px 8px',
@@ -107,7 +122,8 @@ export default function ThemeControl() {
                     border: '1px solid var(--border-light)',
                   }}
                 >
-                  {phaseConfig.shape}
+                  {phaseConfig.shapeIcon}
+                  <span>{phaseConfig.shape}</span>
                 </span>
               </div>
               <div style={{ fontSize: '0.8rem', color: '#64748B', marginTop: '2px' }}>
@@ -139,6 +155,9 @@ export default function ThemeControl() {
               <button
                 onClick={() => setProgress(0.0)}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
                   padding: '7px 12px',
                   borderRadius: '10px',
                   fontSize: '0.8rem',
@@ -150,11 +169,15 @@ export default function ThemeControl() {
                   transition: 'all 0.2s ease',
                 }}
               >
-                ❄️ Cool Sky
+                <SnowflakeIcon size="0.95em" />
+                <span>Cool Sky</span>
               </button>
               <button
                 onClick={() => setProgress(0.5)}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
                   padding: '7px 12px',
                   borderRadius: '10px',
                   fontSize: '0.8rem',
@@ -166,11 +189,15 @@ export default function ThemeControl() {
                   transition: 'all 0.2s ease',
                 }}
               >
-                ⛅ Neutral
+                <CloudSunIcon size="0.95em" />
+                <span>Neutral</span>
               </button>
               <button
                 onClick={() => setProgress(1.0)}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
                   padding: '7px 12px',
                   borderRadius: '10px',
                   fontSize: '0.8rem',
@@ -182,7 +209,8 @@ export default function ThemeControl() {
                   transition: 'all 0.2s ease',
                 }}
               >
-                🔥 Solar Flame
+                <FlameIcon size="0.95em" />
+                <span>Solar Flame</span>
               </button>
             </div>
 
@@ -212,7 +240,7 @@ export default function ThemeControl() {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              {isPaused ? <FiPlay /> : <FiPause />}
+              {isPaused ? <PlayIcon /> : <PauseIcon />}
             </button>
           </div>
         </div>

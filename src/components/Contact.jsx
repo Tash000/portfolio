@@ -101,7 +101,7 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(20px, 4vw, 36px)',
+            padding: 'clamp(20px, 3vw, 30px)',
             border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
             display: 'flex',
@@ -120,7 +120,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: 'auto' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: 'auto' }}>
             <a
               href={socialLinks.github}
               target="_blank"
@@ -128,8 +128,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -150,14 +150,14 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'linear-gradient(135deg, #FF4500, #FF8A00)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px rgba(255, 107, 0, 0.3)',
@@ -165,11 +165,23 @@ const Contact = () => {
               >
                 <GitHubIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   GitHub
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '1rem' }}>github.com/Tash000</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.85rem, 1.8vw, 0.95rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="github.com/Tash000"
+                >
+                  github.com/Tash000
+                </div>
               </div>
             </a>
 
@@ -178,8 +190,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -200,14 +212,14 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'var(--gradient-flame)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px var(--border-glow)',
@@ -215,11 +227,23 @@ const Contact = () => {
               >
                 <MailIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   Email
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>{socialLinks.emailRaw}</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.78rem, 1.8vw, 0.92rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title={socialLinks.emailRaw}
+                >
+                  {socialLinks.emailRaw}
+                </div>
               </div>
             </a>
 
@@ -230,8 +254,8 @@ const Contact = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                padding: '16px 20px',
+                gap: '14px',
+                padding: '14px 18px',
                 borderRadius: '16px',
                 background: 'var(--flame-50)',
                 border: '1.5px solid var(--border-light)',
@@ -252,14 +276,14 @@ const Contact = () => {
             >
               <div
                 style={{
-                  width: '46px',
-                  height: '46px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '12px',
                   background: 'var(--gradient-flame)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.25rem',
                   color: '#fff',
                   flexShrink: 0,
                   boxShadow: '0 4px 12px var(--border-glow)',
@@ -267,11 +291,23 @@ const Contact = () => {
               >
                 <LinkedInIcon />
               </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
+              <div style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '2px' }}>
                   LinkedIn
                 </div>
-                <div style={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>linkedin.com/in/toushif092025</div>
+                <div
+                  style={{
+                    fontWeight: 700,
+                    color: '#0F172A',
+                    fontSize: 'clamp(0.78rem, 1.8vw, 0.92rem)',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                  title="linkedin.com/in/toushif092025"
+                >
+                  linkedin.com/in/toushif092025
+                </div>
               </div>
             </a>
           </div>
@@ -286,7 +322,7 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: 'clamp(20px, 4vw, 36px)',
+            padding: 'clamp(20px, 3vw, 30px)',
             border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06)',
             display: 'flex',

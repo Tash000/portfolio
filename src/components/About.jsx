@@ -5,7 +5,7 @@ import { aboutData, heroData } from '../constants';
 
 const About = () => {
   return (
-    <section id="about" style={{ padding: '100px 24px', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="about" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
@@ -62,8 +62,8 @@ const About = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
-          gap: '24px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+          gap: 'clamp(16px, 3vw, 24px)',
         }}
       >
         {aboutData.cards.map((card, index) => (

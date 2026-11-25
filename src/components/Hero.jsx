@@ -31,7 +31,7 @@ const Hero = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: '130px 24px 60px',
+        padding: 'clamp(90px, 12vh, 130px) clamp(16px, 4vw, 24px) clamp(40px, 6vh, 60px)',
         maxWidth: '1280px',
         margin: '0 auto',
       }}
@@ -39,8 +39,8 @@ const Hero = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '48px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+          gap: 'clamp(28px, 5vw, 48px)',
           alignItems: 'center',
         }}
       >
@@ -269,8 +269,8 @@ const Hero = () => {
           <div
             style={{
               position: 'absolute',
-              width: '340px',
-              height: '340px',
+              width: 'min(340px, 85vw)',
+              height: 'min(340px, 85vw)',
               borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(255, 107, 0, 0.25) 0%, rgba(245, 158, 11, 0.15) 50%, transparent 70%)',
               filter: 'blur(30px)',
@@ -286,19 +286,19 @@ const Hero = () => {
               background: 'rgba(255, 255, 255, 0.9)',
               backdropFilter: 'blur(16px)',
               borderRadius: '32px',
-              padding: '24px',
+              padding: 'clamp(18px, 4vw, 24px)',
               border: '2px solid rgba(255, 107, 0, 0.2)',
               boxShadow: '0 20px 50px rgba(255, 107, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04)',
               textAlign: 'center',
-              maxWidth: '380px',
+              maxWidth: 'min(380px, 100%)',
               width: '100%',
             }}
           >
             {/* Avatar with flame gradient border */}
             <div
               style={{
-                width: '180px',
-                height: '180px',
+                width: 'clamp(140px, 38vw, 180px)',
+                height: 'clamp(140px, 38vw, 180px)',
                 borderRadius: '50%',
                 margin: '0 auto 20px',
                 padding: '5px',
@@ -373,11 +373,11 @@ const Hero = () => {
           background: 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(16px)',
           borderRadius: '20px',
-          padding: '20px 32px',
+          padding: '18px clamp(16px, 3.5vw, 32px)',
           border: '1px solid var(--border-light)',
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))',
           gap: '24px',
           alignItems: 'center',
         }}

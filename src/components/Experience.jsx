@@ -9,7 +9,7 @@ import { experiences } from '../constants';
 
 const styles = {
   section: {
-    padding: '100px 24px',
+    padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)',
     maxWidth: '1240px',
     margin: '0 auto',
     position: 'relative',

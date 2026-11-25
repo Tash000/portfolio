@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiLinkedin, FiSend, FiUser, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
+import {
+  GitHubIcon,
+  MailIcon,
+  LinkedInIcon,
+  CheckCircleIcon,
+  UserIcon,
+  MessageSquareIcon,
+  SendIcon,
+} from './icons/Icons';
 import { socialLinks } from '../constants';
 
 const Contact = () => {
@@ -148,7 +156,7 @@ const Contact = () => {
                   boxShadow: '0 4px 12px rgba(255, 107, 0, 0.3)',
                 }}
               >
-                <FiGithub />
+                <GitHubIcon />
               </div>
               <div>
                 <div style={{ fontSize: '0.8rem', color: '#EA580C', fontWeight: 700, textTransform: 'uppercase' }}>
@@ -198,7 +206,7 @@ const Contact = () => {
                   boxShadow: '0 4px 12px var(--border-glow)',
                 }}
               >
-                <FiMail />
+                <MailIcon />
               </div>
               <div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
@@ -250,7 +258,7 @@ const Contact = () => {
                   boxShadow: '0 4px 12px var(--border-glow)',
                 }}
               >
-                <FiLinkedin />
+                <LinkedInIcon />
               </div>
               <div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--flame-600)', fontWeight: 700, textTransform: 'uppercase' }}>
@@ -278,7 +286,7 @@ const Contact = () => {
         >
           {isSubmitted ? (
             <div style={{ textAlign: 'center', padding: '36px 16px' }}>
-              <FiCheckCircle style={{ fontSize: '3.5rem', color: '#16A34A', marginBottom: '16px' }} />
+              <CheckCircleIcon style={{ fontSize: '3.5rem', color: '#16A34A', marginBottom: '16px' }} />
               <h4 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', marginBottom: '10px' }}>
                 Message Client Triggered!
               </h4>
@@ -302,7 +310,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiUser style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Name
+                  <UserIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Name
                 </label>
                 <input
                   type="text"
@@ -338,7 +346,7 @@ const Contact = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiMail style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Email
+                  <MailIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Your Email
                 </label>
                 <input
                   type="email"
@@ -374,7 +382,7 @@ const Contact = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.88rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
-                  <FiMessageSquare style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Message
+                  <MessageSquareIcon style={{ verticalAlign: 'middle', marginRight: '6px', color: '#EA580C' }} /> Message
                 </label>
                 <textarea
                   name="message"
@@ -421,7 +429,7 @@ const Contact = () => {
                   marginTop: '6px',
                 }}
               >
-                <FiSend /> {isSubmitting ? 'Sending...' : 'Send Message'}
+                <SendIcon /> {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           )}

@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiLock, FiUnlock, FiMail, FiCheck, FiFilter } from 'react-icons/fi';
-import { projectsData, socialLinks } from '../constants';
+import {
+  GitHubIcon,
+  ExternalLinkIcon,
+  LockIcon,
+  UnlockIcon,
+  MailIcon,
+  CheckIcon,
+  StarIcon,
+  LightbulbIcon,
+  PortfolioIcon,
+} from './icons/Icons';
+import { projectsData } from '../constants';
 
 const categories = [
   { id: 'all', label: 'All Projects' },
-  { id: 'featured', label: '🔥 Featured' },
-  { id: 'Robotics', label: '🤖 Robotics' },
-  { id: 'AI & Full-Stack', label: '⚡ AI & Full-Stack' },
-  { id: 'Dev Tools', label: '🛠️ Dev Tools' },
-  { id: 'private', label: '🔒 Private (Request Access)' },
+  { id: 'featured', label: 'Featured', icon: '🔥' },
+  { id: 'Robotics', label: 'Robotics', icon: '🤖' },
+  { id: 'AI & Full-Stack', label: 'AI & Full-Stack', icon: '⚡' },
+  { id: 'Dev Tools', label: 'Dev Tools', icon: '🛠️' },
+  { id: 'private', label: 'Private (Request Access)', icon: '🔒' },
 ];
 
 const Projects = () => {
@@ -66,7 +76,7 @@ const Projects = () => {
             letterSpacing: '2px',
           }}
         >
-          ⚡ Innovation Showcase
+          <PortfolioIcon name="⚡" size="1em" /> Innovation Showcase
         </span>
         <h2
           style={{
@@ -118,6 +128,9 @@ const Projects = () => {
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
                 padding: '9px 18px',
                 borderRadius: '12px',
                 background: isSelected ? 'var(--gradient-flame)' : '#FFFFFF',
@@ -142,7 +155,8 @@ const Projects = () => {
                 }
               }}
             >
-              {cat.label}
+              {cat.icon && <PortfolioIcon name={cat.icon} size="0.95em" />}
+              <span>{cat.label}</span>
             </button>
           );
         })}
@@ -262,7 +276,7 @@ const Projects = () => {
                         boxShadow: '0 2px 8px rgba(234, 88, 12, 0.4)',
                       }}
                     >
-                      <FiLock /> Private Repo
+                      <LockIcon /> Private Repo
                     </span>
                   ) : (
                     <span
@@ -278,7 +292,7 @@ const Projects = () => {
                         gap: '4px',
                       }}
                     >
-                      <FiUnlock /> Public Code
+                      <UnlockIcon /> Public Code
                     </span>
                   )}
                 </div>
@@ -298,9 +312,12 @@ const Projects = () => {
                       textTransform: 'uppercase',
                       letterSpacing: '1px',
                       boxShadow: '0 2px 10px var(--border-glow)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
                     }}
                   >
-                    ⭐ Featured
+                    <StarIcon size="0.95em" /> Featured
                   </div>
                 )}
               </div>
@@ -352,9 +369,13 @@ const Projects = () => {
                         color: 'var(--flame-800)',
                         fontWeight: 600,
                         lineHeight: 1.5,
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '8px',
                       }}
                     >
-                      💡 {project.highlights}
+                      <LightbulbIcon size="1.15em" style={{ marginTop: '2px', color: 'var(--flame-600)' }} />
+                      <span>{project.highlights}</span>
                     </div>
                   )}
 
@@ -402,7 +423,7 @@ const Projects = () => {
                         justifyContent: 'center',
                       }}
                     >
-                      <FiLock /> Request Access / Discuss
+                      <LockIcon /> Request Access / Discuss
                     </button>
                   ) : (
                     <>
@@ -419,7 +440,7 @@ const Projects = () => {
                           justifyContent: 'center',
                         }}
                       >
-                        <FiGithub /> View on GitHub
+                        <GitHubIcon /> View on GitHub
                       </a>
 
                       {project.demoUrl && (
@@ -434,7 +455,7 @@ const Projects = () => {
                             fontSize: '0.88rem',
                           }}
                         >
-                          <FiExternalLink /> Demo
+                          <ExternalLinkIcon /> Demo
                         </a>
                       )}
                     </>
@@ -499,7 +520,7 @@ const Projects = () => {
                   margin: '0 auto 16px',
                 }}
               >
-                <FiLock />
+                <LockIcon />
               </div>
 
               <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', marginBottom: '8px' }}>
@@ -524,7 +545,7 @@ const Projects = () => {
                     gap: '8px',
                   }}
                 >
-                  <FiCheck /> Email client opened! Toushif will review your request.
+                  <CheckIcon /> Email client opened! Toushif will review your request.
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -539,7 +560,7 @@ const Projects = () => {
                       width: '100%',
                     }}
                   >
-                    <FiMail /> Send Access Request Email
+                    <MailIcon /> Send Access Request Email
                   </button>
 
                   <button

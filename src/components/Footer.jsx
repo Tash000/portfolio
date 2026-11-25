@@ -1,6 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from 'react-icons/fi';
-import { FaFire } from 'react-icons/fa';
+import { FlameIcon, GitHubIcon, LinkedInIcon, MailIcon, ArrowUpIcon } from './icons/Icons';
 import { socialLinks, navLinks } from '../constants';
 import ThemeControl from './ThemeControl';
 
@@ -62,7 +61,7 @@ const Footer = () => {
                 fontSize: '1rem',
               }}
             >
-              <FaFire />
+              <FlameIcon />
             </span>
             <span
               style={{
@@ -108,7 +107,7 @@ const Footer = () => {
               fontSize: '0.85rem',
             }}
           >
-            <FiArrowUp /> Back to top
+            <ArrowUpIcon /> Back to top
           </button>
         </div>
 
@@ -150,7 +149,7 @@ const Footer = () => {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <FiGithub />
+              <GitHubIcon />
             </a>
             <a
               href={socialLinks.linkedin}
@@ -173,7 +172,7 @@ const Footer = () => {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <FiLinkedin />
+              <LinkedInIcon />
             </a>
             <a
               href={socialLinks.email}
@@ -194,7 +193,7 @@ const Footer = () => {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <FiMail />
+              <MailIcon />
             </a>
           </div>
         </div>

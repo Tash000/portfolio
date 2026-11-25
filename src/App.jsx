@@ -8,7 +8,7 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ThemeControl from "./components/ThemeControl";
+import ParallaxBackground from "./components/ParallaxBackground";
 
 const SparklesCanvas = lazy(() => import("./components/canvas/Sparkles"));
 
@@ -16,7 +16,10 @@ function App() {
   return (
     <ThemeProvider>
       <div className="relative z-0" style={{ minHeight: '100vh', position: 'relative' }}>
-        {/* Dynamic 3D particle canvas (Stars -> Bubbles -> Fiery Sparkles) */}
+        {/* Layered Parallax Ambient Glow Background */}
+        <ParallaxBackground />
+
+        {/* Dynamic 3D particle canvas (Stars -> Bubbles -> Fiery Sparkles) with 3D scroll parallax */}
         <Suspense fallback={null}>
           <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
             <SparklesCanvas />
@@ -34,9 +37,6 @@ function App() {
           <Contact />
           <Footer />
         </div>
-
-        {/* Interactive Theme Evolution Floating Pill */}
-        <ThemeControl />
       </div>
     </ThemeProvider>
   );

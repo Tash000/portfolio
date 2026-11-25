@@ -2,6 +2,7 @@ import React from 'react';
 import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from 'react-icons/fi';
 import { FaFire } from 'react-icons/fa';
 import { socialLinks, navLinks } from '../constants';
+import ThemeControl from './ThemeControl';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,7 +18,7 @@ const Footer = () => {
         zIndex: 10,
         background: '#FFFFFF',
         borderTop: '2px solid var(--border-light)',
-        padding: '48px 24px 32px',
+        padding: '48px clamp(16px, 4vw, 24px) 32px',
         color: '#64748B',
       }}
     >
@@ -28,9 +29,12 @@ const Footer = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '24px',
+          gap: '32px',
         }}
       >
+        {/* Docked Theme & Atmosphere Controller (No timer, scroll-docked) */}
+        <ThemeControl />
+
         <div
           style={{
             width: '100%',
@@ -121,7 +125,7 @@ const Footer = () => {
           }}
         >
           <div>
-            © {currentYear} <strong>Toushif</strong>. Crafted with high energy 🔥 using React, Three.js & Framer Motion.
+            © {currentYear} <strong>Toushif</strong>. All rights reserved.
           </div>
 
           <div style={{ display: 'flex', gap: '14px' }}>

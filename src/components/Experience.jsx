@@ -6,6 +6,7 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { experiences } from '../constants';
+import { PortfolioIcon, HourglassIcon, TimerIcon, ArrowRightIcon } from './icons/Icons';
 
 const styles = {
   section: {
@@ -57,6 +58,9 @@ const styles = {
     flexWrap: 'wrap',
   },
   toggleBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
     padding: '8px 18px',
     borderRadius: '999px',
     fontSize: '0.85rem',
@@ -182,9 +186,6 @@ const Experience = () => {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <motion.span style={styles.eyebrow} variants={titleVariants}>
-            Journey & Technical Evolution
-          </motion.span>
           <motion.h2 style={styles.title} variants={titleVariants}>
             Engineering{' '}
             <span
@@ -218,7 +219,10 @@ const Experience = () => {
                 boxShadow: order === 'chronological' ? 'var(--shadow-flame)' : 'none',
               }}
             >
-              ⏳ Chronological: Past → Present
+              <HourglassIcon size="1em" />
+              <span>Chronological: Past</span>
+              <ArrowRightIcon size="0.95em" />
+              <span>Present</span>
             </button>
             <button
               onClick={() => setOrder('reverse')}
@@ -230,7 +234,10 @@ const Experience = () => {
                 boxShadow: order === 'reverse' ? 'var(--shadow-flame)' : 'none',
               }}
             >
-              ⏱️ Latest First: Present → Past
+              <TimerIcon size="1em" />
+              <span>Latest First: Present</span>
+              <ArrowRightIcon size="0.95em" />
+              <span>Past</span>
             </button>
           </div>
         </motion.div>
@@ -248,9 +255,11 @@ const Experience = () => {
               contentArrowStyle={contentArrowStyle}
               iconStyle={iconStyle}
               icon={
-                <span style={{ fontSize: '1.35rem' }} role="img" aria-label={exp.title}>
-                  {exp.icon || '🛠️'}
-                </span>
+                <PortfolioIcon
+                  name={exp.icon || '🛠️'}
+                  size="1.35rem"
+                  aria-label={exp.title}
+                />
               }
               visible={isInView}
             >

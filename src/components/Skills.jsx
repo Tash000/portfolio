@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { disciplineBreakdowns } from '../constants';
+import { PortfolioIcon } from './icons/Icons';
 
 /**
  * Reusable Wheel (Donut) Chart Component
@@ -105,22 +106,10 @@ const Skills = () => {
         transition={{ duration: 0.6 }}
         style={{ textAlign: 'center', marginBottom: '50px' }}
       >
-        <span
-          style={{
-            color: 'var(--flame-600)',
-            fontSize: '0.92rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '2px',
-          }}
-        >
-          Repository Telemetry
-        </span>
         <h2
           style={{
             fontSize: 'clamp(2.1rem, 4.5vw, 3.2rem)',
             fontWeight: 800,
-            marginTop: '8px',
             color: '#0F172A',
             letterSpacing: '-0.02em',
           }}
@@ -190,13 +179,14 @@ const Skills = () => {
                       borderRadius: '12px',
                       background: 'var(--flame-50)',
                       border: '1px solid var(--border-light)',
+                      color: 'var(--flame-600)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontSize: '1.3rem',
                     }}
                   >
-                    {discipline.icon}
+                    <PortfolioIcon name={discipline.icon} />
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.2 }}>

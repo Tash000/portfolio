@@ -357,20 +357,20 @@ const Hero = () => {
               }}
             >
               <div style={{ background: 'var(--flame-50)', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--flame-700)' }}>ESP32-S3</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--flame-900)', fontWeight: 500 }}>Dual-Controller</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--flame-700)' }}>Designer</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--flame-900)', fontWeight: 500 }}>CAD & Hardware</div>
               </div>
               <div style={{ background: '#FFFBEB', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#B45309' }}>Jetson & ROS</div>
-                <div style={{ fontSize: '0.75rem', color: '#78350F', fontWeight: 500 }}>Edge Vision</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#B45309' }}>Python & C++</div>
+                <div style={{ fontSize: '0.75rem', color: '#78350F', fontWeight: 500 }}>Systems & Logic</div>
               </div>
               <div style={{ background: '#FFF1F2', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#BE123C' }}>Edge AI & ML</div>
-                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Benchmarking</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#BE123C' }}>AI & ML</div>
+                <div style={{ fontSize: '0.75rem', color: '#881337', fontWeight: 500 }}>Vision & Agents</div>
               </div>
               <div style={{ background: '#F0FDF4', padding: '10px 14px', borderRadius: '14px' }}>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#15803D' }}>Autonomous</div>
-                <div style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 500 }}>AGV Logic</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#15803D' }}>Linux & Backend</div>
+                <div style={{ fontSize: '0.75rem', color: '#166534', fontWeight: 500 }}>Embedded & Cloud</div>
               </div>
             </div>
           </div>

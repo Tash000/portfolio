@@ -49,8 +49,9 @@ const About = () => {
       {/* 4 Feature Pillars */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: 'clamp(16px, 3vw, 24px)',
         }}
       >
@@ -69,6 +70,9 @@ const About = () => {
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
               display: 'flex',
               flexDirection: 'column',
+              flex: '1 1 270px',
+              maxWidth: '380px',
+              minWidth: 'min(100%, 260px)',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
             onMouseEnter={(e) => {

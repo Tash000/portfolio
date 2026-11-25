@@ -64,20 +64,6 @@ const Projects = () => {
         transition={{ duration: 0.6 }}
         style={{ textAlign: 'center', marginBottom: '24px' }}
       >
-        <span
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            color: 'var(--flame-600)',
-            fontSize: '0.92rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '2px',
-          }}
-        >
-          <PortfolioIcon name="⚡" size="1em" /> Innovation Showcase
-        </span>
         <h2
           style={{
             fontSize: 'clamp(2.1rem, 4.5vw, 3.2rem)',

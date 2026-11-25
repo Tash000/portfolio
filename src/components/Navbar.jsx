@@ -38,7 +38,7 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 100,
-        padding: scrolled ? '12px 28px' : '18px 28px',
+        padding: scrolled ? '12px clamp(16px, 4vw, 28px)' : '18px clamp(16px, 4vw, 28px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

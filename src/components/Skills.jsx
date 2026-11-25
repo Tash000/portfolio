@@ -96,7 +96,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" style={{ padding: '100px 24px', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="skills" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
@@ -145,8 +145,8 @@ const Skills = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-          gap: '28px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 310px), 1fr))',
+          gap: 'clamp(18px, 3vw, 28px)',
         }}
       >
         {disciplineBreakdowns.map((discipline, index) => {
@@ -161,7 +161,7 @@ const Skills = () => {
               style={{
                 background: '#FFFFFF',
                 borderRadius: '24px',
-                padding: '30px 26px',
+                padding: '28px clamp(16px, 3.5vw, 24px)',
                 border: '1.5px solid var(--border-light)',
                 boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
                 display: 'flex',
@@ -217,7 +217,8 @@ const Skills = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '24px',
+                    flexWrap: 'wrap',
+                    gap: 'clamp(14px, 3vw, 24px)',
                     padding: '16px',
                     borderRadius: '18px',
                     background: 'var(--flame-50)',

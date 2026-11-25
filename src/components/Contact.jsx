@@ -32,7 +32,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" style={{ padding: '100px 24px', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="contact" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
       <motion.div
         initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -79,8 +79,8 @@ const Contact = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '36px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))',
+          gap: 'clamp(20px, 4vw, 36px)',
           alignItems: 'start',
         }}
       >
@@ -93,7 +93,7 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: '36px',
+            padding: 'clamp(20px, 4vw, 36px)',
             border: '1.5px solid var(--border-light)',
             boxShadow: '0 8px 24px rgba(0, 0, 0, 0.04)',
           }}
@@ -271,7 +271,7 @@ const Contact = () => {
           style={{
             background: '#FFFFFF',
             borderRadius: '24px',
-            padding: '36px',
+            padding: 'clamp(20px, 4vw, 36px)',
             border: '1.5px solid #FED7AA',
             boxShadow: '0 8px 24px rgba(255, 107, 0, 0.06)',
           }}

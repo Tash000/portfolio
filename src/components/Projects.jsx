@@ -45,7 +45,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" style={{ padding: '100px 24px', maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="projects" style={{ padding: 'clamp(60px, 10vh, 100px) clamp(16px, 4vw, 24px)', maxWidth: '1280px', margin: '0 auto' }}>
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 25 }}
@@ -153,8 +153,8 @@ const Projects = () => {
         layout
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-          gap: '32px',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 310px), 1fr))',
+          gap: 'clamp(20px, 3.5vw, 32px)',
         }}
       >
         <AnimatePresence>
@@ -474,9 +474,11 @@ const Projects = () => {
               style={{
                 background: '#FFFFFF',
                 borderRadius: '24px',
-                padding: '32px',
-                maxWidth: '480px',
+                padding: 'clamp(20px, 4vw, 32px)',
+                maxWidth: 'min(480px, calc(100vw - 32px))',
                 width: '100%',
+                maxHeight: '90vh',
+                overflowY: 'auto',
                 boxShadow: '0 25px 60px rgba(0, 0, 0, 0.2)',
                 border: '1.5px solid #FED7AA',
                 textAlign: 'center',

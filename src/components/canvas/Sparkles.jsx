@@ -1,5 +1,5 @@
-import React, { useState, useRef, Suspense, useCallback, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import React, { useState, useRef, useEffect, Suspense, useCallback, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Points, PointMaterial, Preload } from '@react-three/drei';
 import * as THREE from 'three';
 import { useTheme } from '../../context/ThemeContext';
@@ -371,6 +371,38 @@ function DynamicParticleField({ progress }) {
   );
 }
 
+/**
+ * 3D Scroll Parallax Controller
+ * Gently drifts camera on Y and tilts on X as visitor scrolls down the page,
+ * producing real optical depth parallax through the particle cloud.
+ */
+function ScrollParallaxRig() {
+  const { camera } = useThree();
+  const currentY = useRef(0);
+  const targetY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+      // Shifts camera downwards smoothly as user scrolls through the portfolio
+      targetY.current = -ratio * 0.85;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useFrame(() => {
+    // Smooth lerp to prevent jittery camera jump
+    currentY.current += (targetY.current - currentY.current) * 0.06;
+    camera.position.y = currentY.current;
+    camera.position.x = Math.sin(currentY.current * Math.PI) * 0.05;
+  });
+
+  return null;
+}
+
 export default function SparklesCanvas() {
   const { progress } = useTheme();
   const canvasRef = useRef(null);
@@ -405,6 +437,7 @@ export default function SparklesCanvas() {
         onCreated={handleCreated}
       >
         <Suspense fallback={null}>
+          <ScrollParallaxRig />
           <DynamicParticleField progress={progress} />
         </Suspense>
         <Preload all />

@@ -247,6 +247,21 @@ body {
   box-shadow: 0 0 0 4px #FFF7ED, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05) !important;
 }
 
+.vertical-timeline-element-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.vertical-timeline-element-icon svg {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
 /* ---------- Responsive & Mobile View Conditional Sizing ---------- */
 @media (max-width: 640px) {
   .vertical-timeline {

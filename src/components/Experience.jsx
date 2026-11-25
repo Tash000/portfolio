@@ -301,6 +301,19 @@ const Experience = () => {
             padding-bottom: 0 !important;
             margin-bottom: 0 !important;
           }
+          .vertical-timeline-element-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          }
+          .vertical-timeline-element-icon svg {
+            position: static !important;
+            left: auto !important;
+            top: auto !important;
+            margin: 0 !important;
+            width: 24px !important;
+            height: 24px !important;
+          }
         `}</style>
       </div>
     </section>

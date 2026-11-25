@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail, FiZap, FiCode } from 'react-icons/fi';
-import { FaFire } from 'react-icons/fa';
+import { FlameIcon, MailIcon, GitHubIcon, LinkedInIcon, ArrowDownIcon, PortfolioIcon } from './icons/Icons';
 import { heroData, socialLinks } from '../constants';
 import avatarImg from '../assets/avatar.png';
 
@@ -31,7 +30,7 @@ const Hero = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        padding: 'clamp(90px, 12vh, 130px) clamp(16px, 4vw, 24px) clamp(40px, 6vh, 60px)',
+        padding: 'clamp(140px, 16vh, 180px) clamp(16px, 4vw, 24px) clamp(40px, 6vh, 60px)',
         maxWidth: '1280px',
         margin: '0 auto',
       }}
@@ -143,23 +142,39 @@ const Hero = () => {
 
           {/* Pill Badges */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '36px' }}>
-            {heroData.badges.map((badge, idx) => (
-              <span
-                key={idx}
-                style={{
-                  padding: '6px 12px',
-                  borderRadius: '10px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(255, 107, 0, 0.2)',
-                  fontSize: '0.82rem',
-                  fontWeight: 600,
-                  color: '#334155',
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
-                }}
-              >
-                {badge.label}
-              </span>
-            ))}
+            {heroData.badges.map((badge, idx) => {
+              const emojiMatch = badge.label.match(/^(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)\s+(.+)$/u);
+              const badgeIcon = badge.icon || (emojiMatch ? emojiMatch[1] : null);
+              const badgeText = emojiMatch ? emojiMatch[2] : badge.label;
+
+              return (
+                <span
+                  key={idx}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 12px',
+                    borderRadius: '10px',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(255, 107, 0, 0.2)',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    color: '#334155',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+                  }}
+                >
+                  {badgeIcon && (
+                    <PortfolioIcon
+                      name={badgeIcon}
+                      size="1em"
+                      color={badge.color || 'var(--flame-600)'}
+                    />
+                  )}
+                  <span>{badgeText}</span>
+                </span>
+              );
+            })}
           </div>
 
           {/* Action Buttons */}
@@ -173,7 +188,7 @@ const Hero = () => {
                 fontSize: '1rem',
               }}
             >
-              <FaFire style={{ fontSize: '1.2rem' }} /> Explore Projects
+              <FlameIcon size="1.2rem" /> Explore Projects
             </a>
 
             <a
@@ -185,7 +200,7 @@ const Hero = () => {
                 fontSize: '1rem',
               }}
             >
-              <FiMail style={{ fontSize: '1.1rem' }} /> Get In Touch
+              <MailIcon size="1.1rem" /> Get In Touch
             </a>
 
             <a
@@ -219,7 +234,7 @@ const Hero = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <FiGithub />
+              <GitHubIcon />
             </a>
 
             <a
@@ -253,7 +268,7 @@ const Hero = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <FiLinkedin />
+              <LinkedInIcon />
             </a>
           </div>
         </motion.div>
@@ -429,7 +444,7 @@ const Hero = () => {
             boxShadow: '0 2px 8px var(--border-glow)',
           }}
         >
-          <FiArrowDown />
+          <ArrowDownIcon />
         </a>
       </div>
     </section>
